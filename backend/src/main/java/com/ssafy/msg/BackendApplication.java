@@ -1,14 +1,9 @@
 package com.ssafy.msg;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-
-import com.ssafy.msg.test.model.dto.TestDto;
-import com.ssafy.msg.test.model.repo.TestRepository;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /*
@@ -92,41 +87,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 
 @EnableScheduling
-@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
-public class BackendApplication implements CommandLineRunner {
-
-	@Autowired
-	private TestRepository repository;
+public class BackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-
-		repository.deleteAll();
-
-		repository.save(TestDto.builder().firstName("Alice").lastName("Smith").build());
-		repository.save(TestDto.builder().firstName("Bob").lastName("Smith").build());
-		
-		System.out.println("TestDtos found with findAll():");
-		System.out.println("-------------------------------");
-		for (TestDto testDto : repository.findAll()) {
-			System.out.println(testDto);
-		}
-		System.out.println();
-
-		System.out.println("TestDto found with findByFirstName('Alice'):");
-		System.out.println("--------------------------------");
-		System.out.println(repository.findByFirstName("Alice"));
-
-		System.out.println("TestDtos found with findByLastName('Smith'):");
-		System.out.println("--------------------------------");
-		for (TestDto testDto : repository.findByLastName("Smith")) {
-			System.out.println(testDto);
-		}
-
-	}
 }

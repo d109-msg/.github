@@ -1,0 +1,131 @@
+server:
+  port: ENC(xzplv5mPFBW/Qv+4ZPqiKA==)
+
+spring:
+  application:
+    name: 'MSG'
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    jdbc-url: ENC(vIzCyDVLZQuIg59BhXM854wv0ddCt/iNbqRHQafFSCC1QESkt4gajZdfrLwUZGz1)
+    username: ENC(fnkZzl1wC8BdtdVjncsorw==)
+    password: ENC(k2+MVCmCfJ0jlBqKGkxfhg==)
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      connectionTimeout: 5000
+      validationTimeout: 1000
+      maximumPoolSize: 10
+      
+  data:
+    mongodb:
+      uri: ENC(QRdPVFDE6WJUMaQ4X8wlnV3KLT1iL5p3t1VN8nHxoCce0uZk5pd0Sg==)
+
+    redis:
+      host: ENC(+IM/6EsoIqHWxle99GWAsFNZvOq9Hus0U5sIMr1Joxs=)
+      port: ENC(M8D7oJuhou94vFzDy1KefA==)
+      password: ENC(9vr2ooqCRC1USNBtFBipJ+Iu1RCPANsKR4yZ2IVV5EczWoK8A/VrxA==)
+      
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ENC(hXs5LlfCOigzQIQ5Z3Lkq627WLxBu2/wOF0ULAwH89zmSl7FUBPyLA==)
+    password: ENC(FXwgBwToqerHmqkyCzmUhkbr6GHXMCZiWCyslFIaLzA=)
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+springdoc:
+  swagger-ui:
+    doc-expansion: none
+
+logging:
+  level:
+    root: info
+    com.ssafy.msg: debug
+      
+header:
+  authorization: 'Authorization'
+      
+oauth2:
+  client:
+    registration:
+      google:
+        client-id: ENC(PBI2qmh2fbhYhH9pMUZjy8tS+hFFHmRIau6DZImHl6tRUDaAgpukHea4TTRlam/5IsI6Tz9kqbDa6QVfUPFqewwQXYRAXW1EsayuqjmxT3VlrEqIUFreeQ==)
+        client-secret: ENC(l6bHFyXQwoj0UqVJBvA9fO8dR+VOqVxi1WQm1zzqJV0sWr/BQiuZYnj3UB1HtfBp)
+        redirect-uri: http://localhost:80/sign-in/callback/google
+        authorization-grant-type: authorization_code
+        scope: profile, email
+        client-name: Google
+
+      naver:
+        client-id: ENC(BwZDtXzR3dWPaJXl1v3+GHxrn7wOYpHgHp/OiIJG2iw=)
+        client-secret: ENC(Nwmxhq3rFyp+bc7blQQJnhYrewfqE2wc)
+        redirect-uri: http://localhost:80/sign-in/callback/naver
+        authorization-grant-type: authorization_code
+        scope: name, email
+        client-name: Naver
+
+      kakao:
+        client-id: 247fbba0160d9dbd31f7c1cf712806db
+        client-secret: bWut8tLdAbNXRCfeqAHr6HdfCnq4tTx7
+        redirect-uri: http://localhost:80/sign-in/callback/kakao
+        client-authentication-method: POST
+        authorization-grant-type: authorization_code
+        scope: profile_nickname, account_email
+        client-name: Kakao
+
+    provider:
+      google:
+        authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+        token-uri: https://www.googleapis.com/oauth2/v4/token
+        user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+        user-name-attribute: sub
+    
+      naver:
+        authorization-uri: https://nid.naver.com/oauth2.0/authorize
+        token-uri: https://nid.naver.com/oauth2.0/token
+        user-info-uri: https://openapi.naver.com/v1/nid/me
+        user-name-attribute: response
+
+      kakao:
+        authorization-uri: https://kauth.kakao.com/oauth/authorize
+        token-uri: https://kauth.kakao.com/oauth/token
+        user-info-uri: https://kapi.kakao.com/v2/user/me
+        user-name-attribute: id
+
+service:    
+  jwt:
+    secret-key: ENC(v2eS8Yl5nOs3cfQJhMtHQevpk7qHXEfxJYWhxrVzFgrCan6KORSlYSt7W+e2iV9L5uWDF6XHOwWtGNa3TUdHMQ==)
+    access-expiration: 120000000 # millisecond
+    refresh-expiration: 180000000
+
+open-ai:
+  url: https://api.openai.com/v1/chat/completions
+  secret-key: ENC(cqRTCuBKQtrYRSz1UgmGfuhcZ/5swWX5K63FVCp4WiFHQDXdAn4wNDLPtR80LYD8QJctduN2EgUkTYA2UDkQ8g==)
+
+cloud:
+  aws:
+    s3:
+      bucket: ENC(zZThVC9CexDBRXjarD5F2Ox48hHHVG6249Or1yOhADA=)
+    credentials:
+      access-key: ENC(lAvvb3okmlD88vxNN7yxKbrL8LWyj+xVmW0jvYNaZAY=)
+      secret-key: ENC(4f+JycMd/YH6vvpKMBCVvif5FjChn6kuEkFL7XOIX2EUqRZeAgMSKdGF0o9D0yf/yWQf78nqw80=)
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false

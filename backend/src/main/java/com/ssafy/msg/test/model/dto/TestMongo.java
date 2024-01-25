@@ -3,13 +3,10 @@ package com.ssafy.msg.test.model.dto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.ssafy.msg.user.model.dto.AccessTokenDto;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 
 @Data
@@ -17,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "test")
-public class TestDto {
+public class TestMongo {
 
 	  @Id
 	  private String id;
