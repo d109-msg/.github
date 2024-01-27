@@ -14,9 +14,16 @@ spring:
       enabled: always
 
   datasource:
-    jdbc-url: ENC(vIzCyDVLZQuIg59BhXM854wv0ddCt/iNbqRHQafFSCC1QESkt4gajZdfrLwUZGz1)
-    username: ENC(fnkZzl1wC8BdtdVjncsorw==)
-    password: ENC(k2+MVCmCfJ0jlBqKGkxfhg==)
+#    development
+#    jdbc-url: ENC(vIzCyDVLZQuIg59BhXM854wv0ddCt/iNbqRHQafFSCC1QESkt4gajZdfrLwUZGz1)
+#    username: ENC(fnkZzl1wC8BdtdVjncsorw==)
+#    password: ENC(k2+MVCmCfJ0jlBqKGkxfhg==)
+
+#    production
+    jdbc-url: ENC(DtLstgxX7vb7RTEgJJavOL4olUvXJgsl7c7meXmQ4a2QEHQuFQ1/qUbR4R/oAKv6)
+    username: ENC(xSshffkTINFdSKx5rKkKWiZFoGd7JWvc)
+    password: ENC(2hcpUHBJxFU/nVcdXxOeLN4seEiGvRp9zfAc0BsZ1TWlx5almOWRVw==)
+
     driver-class-name: org.mariadb.jdbc.Driver
     hikari:
       connectionTimeout: 5000
@@ -25,12 +32,26 @@ spring:
       
   data:
     mongodb:
-      uri: ENC(QRdPVFDE6WJUMaQ4X8wlnV3KLT1iL5p3t1VN8nHxoCce0uZk5pd0Sg==)
+#      development
+#      uri: ENC(QRdPVFDE6WJUMaQ4X8wlnV3KLT1iL5p3t1VN8nHxoCce0uZk5pd0Sg==)
+
+#      production
+      host: ENC(kuNwa0HYrWNXigVI4FfXETp00QcpDhtW)
+      port: ENC(DoQFGqoRFbX2SJkH4l2fxQ==)
+      database: ENC(EaC4yYRnGt5mZm6tdW1QWw==)
+      username: ENC(vXjqjb5sDU44f8mFf5O94QxlA8Eby1aB)
+      password: ENC(5yVg2wrjyUShkEZmt90gQBU8hH5gkDUSOO7O0a/gFxzaA0nsQIvqPQ==)
 
     redis:
-      host: ENC(+IM/6EsoIqHWxle99GWAsFNZvOq9Hus0U5sIMr1Joxs=)
+#      development
+      host: ENC(1zcfSlExXzF7F9+DxubAUHQOYDM2dwTN)
       port: ENC(M8D7oJuhou94vFzDy1KefA==)
       password: ENC(9vr2ooqCRC1USNBtFBipJ+Iu1RCPANsKR4yZ2IVV5EczWoK8A/VrxA==)
+
+#      production
+#      host: ENC(+O1K/cEBwmC+PFnHgUb71Hks6VGo76YT)
+#      port: ENC(ZeD1XKOM1q94GxVLxYBxxA==)
+#      password: ENC(DuXAck3VbANCfOq1PEWEYDx6Q6RuSTrKGA0gSEgcYoesDlrWO2RHJA==)
       
   mail:
     host: smtp.gmail.com
