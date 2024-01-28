@@ -8,9 +8,14 @@ import com.ssafy.msg.test.model.repo.TestRedisRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
+import java.util.TreeMap;
 
 @RestController
 @RequestMapping("/test")
@@ -20,10 +25,22 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Test", description = "테스트 관련 API")
 public class TestController {
 
+    @Value("${server.env}")
+    private String serverEnv;
+
+    @Value("${server.port}")
+    private String serverPort;
+
+    @Value("${server.address}")
+    private String serverAddress;
+
+    @Value("${server.name}")
+    private String serverName;
+
     private final TestMongoRepository testMongoRepository;
     private final TestRedisRepository testRedisRepository;
 
-    @GetMapping("/mongo")
+    @GetMapping("/mongodb")
     public String testMongo() {
         testMongoRepository.deleteAll();
 
@@ -56,5 +73,21 @@ public class TestController {
         testRedisRepository.save(testRedis);
 
         return testRedisRepository.findAll().toString();
+    }
+
+    @GetMapping("/hc")
+    public ResponseEntity<?> healthCheck() {
+        Map<String, String> responseData = new TreeMap<>();
+        responseData.put("serverAddress", serverAddress);
+        responseData.put("serverName", serverName);
+        responseData.put("serverPort", serverPort);
+        responseData.put("serverEnv", serverEnv);
+        return ResponseEntity.ok(responseData);
+    }
+
+    @GetMapping("/env")
+    public ResponseEntity<?> getEnv() {
+
+        return ResponseEntity.ok(serverEnv);
     }
 }
