@@ -31,8 +31,8 @@ public class TestController {
     @Value("${server.port}")
     private String serverPort;
 
-    @Value("${server.address}")
-    private String serverAddress;
+//    @Value("${server.address}")
+//    private String serverAddress;
 
     @Value("${server.name}")
     private String serverName;
@@ -78,7 +78,7 @@ public class TestController {
     @GetMapping("/hc")
     public ResponseEntity<?> healthCheck() {
         Map<String, String> responseData = new TreeMap<>();
-        responseData.put("serverAddress", serverAddress);
+//        responseData.put("serverAddress", serverAddress);
         responseData.put("serverName", serverName);
         responseData.put("serverPort", serverPort);
         responseData.put("serverEnv", serverEnv);
