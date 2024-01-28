@@ -18,8 +18,9 @@ spring:
 
 server:
   port: 8080
-#  address: ENC(Cl0kkqW55cNhTXyE9Aa+nvWa6+KP9hWk)
-  name: local-server
+
+server-address: ENC(Cl0kkqW55cNhTXyE9Aa+nvWa6+KP9hWk)
+server-name: local-server
 
 oauth2:
   client:
@@ -42,8 +43,9 @@ spring:
 
 server:
   port: 8080
-#  address: ENC(uuBZVo6SocCn53cfBmfJ6dLqJBdEx8aYV8ro2zGWTeM=)
-  name: blue-server
+
+server-address: ENC(uuBZVo6SocCn53cfBmfJ6dLqJBdEx8aYV8ro2zGWTeM=)
+server-name: blue-server
 
 oauth2:
   client:
@@ -66,8 +68,9 @@ spring:
 
 server:
   port: 8081
-#  address: ENC(uuBZVo6SocCn53cfBmfJ6dLqJBdEx8aYV8ro2zGWTeM=)
-  name: green-server
+
+server-address: ENC(uuBZVo6SocCn53cfBmfJ6dLqJBdEx8aYV8ro2zGWTeM=)
+server-name: green-server
 
 oauth2:
   client:

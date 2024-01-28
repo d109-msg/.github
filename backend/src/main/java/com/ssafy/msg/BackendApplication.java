@@ -1,5 +1,7 @@
 package com.ssafy.msg;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -86,6 +88,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * N:M 관계에서만 관계가 명시적으로 테이블로 나타남
  */
 
+@OpenAPIDefinition(
+		servers = {
+				@Server(url = "/", description = "Default Server URL"),
+		}
+)
 @EnableScheduling
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
