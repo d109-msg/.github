@@ -42,7 +42,7 @@ spring:
 
 server:
   port: 8080
-  address: localhost
+  address: 43.202.46.235
   name: blue-server
 
 oauth2:
@@ -66,7 +66,7 @@ spring:
 
 server:
   port: 8081
-  address: localhost
+  address: 43.202.46.235
   name: green-server
 
 oauth2:
