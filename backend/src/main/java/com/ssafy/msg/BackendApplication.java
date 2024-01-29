@@ -86,6 +86,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * N:M 관계에서만 관계가 명시적으로 테이블로 나타남
  */
 
+
+// push test
 @EnableScheduling
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
