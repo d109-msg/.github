@@ -87,7 +87,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 
 
-// push test
+// 무중단 배포 버전
 @EnableScheduling
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
