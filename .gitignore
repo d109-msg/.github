@@ -31,7 +31,7 @@ pnpm-debug.log*
 ### Java ###
 # Compiled class file
 *.class
-*.yml
+# *.yml
 
 # Log file
 *.log
