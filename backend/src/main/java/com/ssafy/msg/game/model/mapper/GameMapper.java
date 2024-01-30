@@ -30,17 +30,23 @@ public interface GameMapper {
 
     ParticipantDto getParticipant(ParticipantReceiveDto participantReceiveDto) throws SQLException;
 
-    List<ParticipantDto> getAliveParticipants(String roomId) throws SQLException;
+    List<AliveParticipantDto> getAliveParticipants(String roomId) throws SQLException;
 
-    void normalVote(int participantId, int targetId) throws SQLException;
-    void mafiaVote(int participantId, int targetId) throws SQLException;
-    void doctorVote(int participantId, int targetId) throws SQLException;
+    void normalVote(int participantId, int targetId, Integer day) throws SQLException;
+    void mafiaVote(int participantId, int targetId, Integer day) throws SQLException;
+    void doctorVote(int participantId, int targetId, Integer day) throws SQLException;
 
     ParticipantDto getParticipantWithPId(int participantId) throws SQLException;
 
-    MyVoteDto getMyVote(int participantId) throws SQLException;
+    MyVoteDto getMyVote(int participantId, int day) throws SQLException;
 
     int getRandomMission(String roomId) throws SQLException;
 
     void createNewMission(NewMissionDto newMissionDto) throws SQLException;
+
+    int isAlive(int participantId) throws SQLException;
+
+    MissionResultDto getMyMission(int participantId, int day) throws SQLException;
+
+    Integer getMaxDay(int participantId) throws SQLException;
 }

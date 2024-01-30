@@ -1,5 +1,6 @@
 package com.ssafy.msg.game.model.service;
 
+import com.ssafy.msg.article.util.OpenAiUtil;
 import com.ssafy.msg.chat.model.dto.RoomDto;
 import com.ssafy.msg.chat.model.mapper.ChatMapper;
 import com.ssafy.msg.game.model.dto.*;
@@ -9,6 +10,7 @@ import com.ssafy.msg.user.model.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -23,6 +25,8 @@ public class GameServiceImpl implements GameService{
     private final GameMapper gameMapper;
     private final ChatMapper chatMapper;
     private final UserMapper userMapper;
+
+    private final OpenAiUtil openAiUtil;
 
     @Override
     public boolean getRandomGameApplyStatus(int userId) throws Exception {
@@ -53,9 +57,76 @@ public class GameServiceImpl implements GameService{
         }
     }
 
+    /**
+     * 이미지와 조건을 입력받아 해당 이미지가 조건에 부합하는지 gpt에게 요청을 보냅니다.
+     * json내에 content의 내용을 체크하여 dto로 만들어 리턴합니다.
+     * @param imageFile 검사할 사진
+     * @param condition 조건
+     * @return AiResultDto 합격 여부와 이유를 담아 리턴합니다.
+     * @throws Exception
+     */
+    @Override
+    public AiResultDto analyzeImage(MultipartFile imageFile, String condition) throws Exception {
+        log.info("analyzeImage() condition : {}", condition);
+
+        OpenAiApiResponseDto result = openAiUtil.analyzeImage(imageFile, condition);
+        AiResultDto aiResult = new AiResultDto();
+
+        if(result != null) {
+            //응답이 비어있지 않다면
+
+            String content = result.getChoices().get(0).getMessage().getContent();
+            log.info("analyzeImage() result : {}", content);
+
+            if(content.contains("true") || content.contains("True")) {
+                //응답이 true일 때
+                log.info("analyzeImage() true");
+                aiResult.setResult(true);
+            } else if(content.contains("false") || content.contains("False")) {
+                //응답이 false일 때
+                log.info("analyzeImage() false");
+                aiResult.setResult(false);
+            } else {
+                //응답이 잘못 됨
+                log.info("analyzeImage() ai 형식 오류");
+                aiResult.setResult(false);
+            }
+
+            //content 내에 이유: 뒤 부터 자르기 위해 index를 가져온다.
+            String keyString = "이유:";
+            int keyIndex = content.indexOf(keyString);
+
+            if (keyIndex != -1) {
+                // 정상적으로 이유: 가 포함되어 있다면 뒷 부분을 잘라 dto에 담습니다.
+                String reason = content.substring(keyIndex + keyString.length()).trim();
+                log.info("analyzeImage() 이유 : {}", reason);
+
+                aiResult.setReason(reason);
+            } else {
+                log.info("analyzeImage() 이유: 가 포함되지 않음");
+                aiResult.setReason("오류");
+            }
+        }
+
+        return aiResult;
+    }
+
+    /**
+     * participant가 죽었다면
+     * @param participantId
+     * @return
+     * @throws Exception
+     */
     @Override
     public String getMyVote(int participantId) throws Exception {
-        MyVoteDto dto = gameMapper.getMyVote(participantId);
+        Integer day = getMaxDay(participantId);
+
+        if(day == null) { //죽었다면, maxday가 다르다면
+            log.info("getMyVote() player is dead");
+            return "participant is dead";
+        }
+
+        MyVoteDto dto = gameMapper.getMyVote(participantId, day);
         String job = gameMapper.getParticipantWithPId(participantId).getJobId();
         log.info("getMyVote() myVote : {}", dto);
         log.info("getMyVote() job : {}", job);
@@ -238,7 +309,7 @@ public class GameServiceImpl implements GameService{
      * @return 모든 유저가 각 몇 표를 받았는지의 정보가 담긴 list return
      */
     @Override
-    public List<VoteResultDto> getRoomVote(int userId, String roomId) throws Exception {
+    public List<VoteResponseDto> getRoomVote(int userId, String roomId) throws Exception {
         ParticipantDto participantDto = gameMapper.getParticipant(new ParticipantReceiveDto(userId, roomId));
 
         String job = participantDto.getJobId();
@@ -248,26 +319,34 @@ public class GameServiceImpl implements GameService{
         log.info("getRoomVote() -> list : {}", list);
         log.info("getRoomVote() -> roomId : {}", roomId);
 
-        if (getTime()) {
-            for(VoteResultDto vote : list){
-                vote.setDoctorVoteCount(-1);
-                vote.setMafiaVoteCount(-1);
-            }
-        } else {
-            for(VoteResultDto vote : list){
-                vote.setNormalVoteCount(-1); //밤일 때, 시민 투표 가림
+        List<VoteResponseDto> responseList = new ArrayList<>();
 
-                if(!job.equals("의사")) { //의사가 아니라면, 의사 투표 가림
-                    vote.setDoctorVoteCount(-1);
-                }
-                if(!job.equals("마피아")) { //마피아가 아니라면, 마피아 투표 가림
-                    vote.setMafiaVoteCount(-1);
+        for(VoteResultDto vote : list){
+            VoteResponseDto voteResult = VoteResponseDto.builder()
+                    .id(vote.getId())
+                    .nickname(vote.getNickname())
+                    .imageUrl(vote.getImageUrl())
+                    .build();
+            if (getTime()) { // 낮일 때
+                voteResult.setVoteCount(vote.getNormalVoteCount());
+            } else { //밤일 때
+                if (job.equals("의사")) { //의사일 때
+                    voteResult.setVoteCount(vote.getDoctorVoteCount());
+                } else if (job.equals("마피아")) { //마피아일 때
+                    voteResult.setVoteCount(vote.getMafiaVoteCount());
+                } else if (job.equals("시민")) {
+                    log.info("getRoomVote() 시민에게 보여줄 투표가 없음");
+                    return null;
                 }
             }
+
+            responseList.add(voteResult);
         }
-        log.info("getRoomVote() changed list : {}", list);
 
-        return list;
+
+        log.info("getRoomVote() resultList : {}", responseList);
+
+        return responseList;
     }
 
     /**
@@ -288,8 +367,45 @@ public class GameServiceImpl implements GameService{
      * @throws Exception
      */
     @Override
-    public List<ParticipantDto> getAliveParticipant(String roomId) throws Exception {
+    public List<AliveParticipantDto> getAliveParticipant(String roomId) throws Exception {
         return gameMapper.getAliveParticipants(roomId);
+    }
+
+    /**
+     * 유저의 가장 높은 day가 room의 가장 높은 day와 같다면 day를 리턴하고 아니라면 null을 리턴함
+     * @param participantId
+     * @return Integer day or null
+     * @throws Exception
+     */
+    @Override
+    public Integer getMaxDay(int participantId) throws Exception {
+        if(gameMapper.isAlive(participantId) != 0) {
+            log.info("getMaxDay() participant is dead");
+            return null;
+        } else {
+            Integer day = gameMapper.getMaxDay(participantId);
+            log.info("getMaxDay() day : {}", day);
+
+            return day;
+        }
+    }
+
+    /**
+     * participantId를 입력받아 현재 진행 중인 미션을 리턴
+     * @param participantId
+     * @return MissionResultDto 현재 진행 중인 미션 (일반, 마피아)
+     * @throws Exception
+     */
+    @Override
+    public MissionResultDto getMyMission(int participantId) throws Exception {
+        Integer day = getMaxDay(participantId);
+
+        if(day == null) {
+            log.info("getMyMission() participant is dead");
+            return null;
+        } else {
+            return gameMapper.getMyMission(participantId, day);
+        }
     }
 
     /**
@@ -299,21 +415,28 @@ public class GameServiceImpl implements GameService{
      */
     @Override
     public void vote(VoteReceiveDto voteReceiveDto) throws Exception {
+        Integer day = getMaxDay(voteReceiveDto.getParticipantId());
+
+        if(day == null) {
+            log.info("vote() participant is dead");
+            return;
+        }
+
         if(getTime()){
             //낮 08:00 - 20:00
             //시민 투표
             log.info("vote() -> normalVote : {}", voteReceiveDto.getTargetId());
-            gameMapper.normalVote(voteReceiveDto.getParticipantId(), voteReceiveDto.getTargetId());
+            gameMapper.normalVote(voteReceiveDto.getParticipantId(), voteReceiveDto.getTargetId(), day);
         } else {
             //밤
             if (voteReceiveDto.getJobId().equals("마피아")){
                 //마피아 투표
                 log.info("vote() -> mafiaVote : {}", voteReceiveDto.getTargetId());
-                gameMapper.mafiaVote(voteReceiveDto.getParticipantId(), voteReceiveDto.getTargetId());
+                gameMapper.mafiaVote(voteReceiveDto.getParticipantId(), voteReceiveDto.getTargetId(), day);
             } else if(voteReceiveDto.getJobId().equals("의사")){
                 //의사 투표
                 log.info("vote() -> doctorVote : {}", voteReceiveDto.getTargetId());
-                gameMapper.doctorVote(voteReceiveDto.getParticipantId(), voteReceiveDto.getTargetId());
+                gameMapper.doctorVote(voteReceiveDto.getParticipantId(), voteReceiveDto.getTargetId(), day);
             }
         }
     }
@@ -333,10 +456,10 @@ public class GameServiceImpl implements GameService{
 
         // 현재 시간이 시작 시간과 종료 시간 사이인지 확인합니다.
         if (now.toLocalTime().isAfter(startTime) && now.toLocalTime().isBefore(endTime)) {
-            log.info("getRoomVote() 현재 시간은 08:00과 20:00 사이입니다.");
+            log.info("getRoomTime() 현재 시간은 08:00과 20:00 사이입니다.");
             return true;
         } else {
-            log.info("getRoomVote() 현재 시간은 08:00과 20:00 사이가 아닙니다.");
+            log.info("getRoomTime() 현재 시간은 08:00과 20:00 사이가 아닙니다.");
             return false;
         }
     }
@@ -344,6 +467,8 @@ public class GameServiceImpl implements GameService{
     /**
      * roomId와 day를 입력받아 해당 room에서 수행한적 없는 미션을 랜덤으로 골라
      * 모든 participant에게 새로운 daily미션을 입력받은 day로 만든다.
+     * 모든 dailyMission은 생성될 때 기본적으로 각 보트가 본인을 찍음
+     * 마피아나 의사가 아니라면 해당 vote는 null로 처리
      * @param roomId 새로운 미션을 분배할 roomId 입력
      * @param day   새로 만들 미션의 날짜
      * @throws Exception
@@ -363,4 +488,6 @@ public class GameServiceImpl implements GameService{
 
         log.info("createNewMission() -> new mission created");
     }
+
+
 }

@@ -1,9 +1,7 @@
 package com.ssafy.msg.article.model.mapper;
 
-import com.ssafy.msg.article.model.dto.ArticleDetailDto;
-import com.ssafy.msg.article.model.dto.ArticleDto;
-import com.ssafy.msg.article.model.dto.ArticleImageDto;
-import com.ssafy.msg.article.model.dto.ArticleWithUrlDto;
+import com.ssafy.msg.article.model.dto.*;
+import org.apache.ibatis.jdbc.SQL;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,8 +16,18 @@ public interface ArticleMapper {
 
     List<ArticleWithUrlDto> getArticles(int userId) throws SQLException;
 
-    ArticleDetailDto getArticleDetail(int articleId) throws SQLException;
+    ArticleDetailDto getArticleDetail(ArticleDto articleDto) throws SQLException;
 
-    List<ArticleDetailDto> getFeedArticleList(int articleId) throws SQLException;
+    List<ArticleDetailDto> getFeedArticleList(FeedParamDto feedParamDto) throws SQLException;
+
+    Boolean selectArticleLike(ArticleDto articleDto) throws SQLException;
+
+    void insertArticleLike(ArticleDto articleDto) throws SQLException;
+
+    void deleteArticleLike(ArticleDto articleDto) throws SQLException;
+
+    int getLikeCount(int articleId) throws SQLException;
+
+    void createComment(CommentDto commentDto) throws SQLException;
 
 }

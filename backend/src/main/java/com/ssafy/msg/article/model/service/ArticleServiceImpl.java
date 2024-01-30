@@ -1,14 +1,12 @@
 package com.ssafy.msg.article.model.service;
 
-import com.ssafy.msg.article.model.dto.ArticleDetailDto;
-import com.ssafy.msg.article.model.dto.ArticleDto;
-import com.ssafy.msg.article.model.dto.ArticleImageDto;
-import com.ssafy.msg.article.model.dto.ArticleWithUrlDto;
+import com.ssafy.msg.article.model.dto.*;
 import com.ssafy.msg.article.model.mapper.ArticleMapper;
 import com.ssafy.msg.article.util.S3Util;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class ArticleServiceImpl implements ArticleService{
     private final S3Util s3Util;
 
     @Override
-    public ArticleDetailDto createArticle(ArticleDto articleDto) throws Exception {
+    public void createArticle(ArticleDto articleDto) throws Exception {
         log.info("(service) Start");
 
         if (articleDto.getRoomId().isEmpty()) { // 일반 게시물 작성 (room_id 가 비어있을 때)
@@ -58,7 +56,6 @@ public class ArticleServiceImpl implements ArticleService{
             }
         }
         log.info("(service) end");
-        return getArticleDetail(articleDto.getId());
     }
 
     @Override
@@ -69,13 +66,16 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
-    public ArticleDetailDto getArticleDetail(int articleId) throws Exception {
+    public ArticleDetailDto getArticleDetail(ArticleDto articleDto) throws Exception {
         log.info("(ArticleServiceImpl) getArticleDetail 시작(이미지 제외)");
-        ArticleDetailDto articleDetailDto = articleMapper.getArticleDetail(articleId);
-        List<String> urls = new ArrayList<>();
-        log.info("(ArticleServiceImpl) 여기까지는 됐을까 articleDetailDto(): {}", articleDetailDto);
+        ArticleDetailDto articleDetailDto = articleMapper.getArticleDetail(articleDto);
 
-        for (ArticleImageDto ai : articleMapper.getArticleImages(articleId)) {
+        articleDetailDto.setLikeCount(articleMapper.getLikeCount(articleDto.getId())); // 좋아요 수 넣어주기
+        articleDetailDto.setIsLike(isLike(articleDto)); // 좋아요 여부 알려주기
+
+        List<String> urls = new ArrayList<>();
+
+        for (ArticleImageDto ai : articleMapper.getArticleImages(articleDto.getId())) {
             urls.add(ai.getUrl());
         }
         articleDetailDto.setUrls(urls);
@@ -86,18 +86,69 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
-    public List<ArticleDetailDto> getFeedArticleList(int userId) throws Exception {
+    public List<ArticleDetailDto> getFeedArticleList(FeedParamDto feedParamDto) throws Exception {
         log.info("(ArticleServiceImpl) getFeed 피드 게시물 리스트 조회 시작");
-        List<ArticleDetailDto> articleList = articleMapper.getFeedArticleList(userId);
+        List<ArticleDetailDto> articleList = articleMapper.getFeedArticleList(feedParamDto);
 
         List<ArticleDetailDto> feedArticleList = new ArrayList<>();
 
         for (ArticleDetailDto at : articleList) { // 받아온 팔로우하는 사람들의 게시물 리스트를 받아서 돌린다
-            ArticleDetailDto articleDetail = getArticleDetail(at.getArticleId());
+            ArticleDto articleDto = ArticleDto.builder().id(at.getArticleId()).userId(at.getUserId()).build();
+            ArticleDetailDto articleDetail = getArticleDetail(articleDto);
             at.setUrls(articleDetail.getUrls());
+
             feedArticleList.add(at);
+
+
         }
         return feedArticleList;
 
     }
+
+
+
+    @Override
+    @Transactional
+    public void articleLike(ArticleDto articleDto) throws Exception {
+        log.info("(ArticleServiceImpl) 게시물 좋아요 시작");
+        /*
+        좋아요 목록을 조회 해서 지금 유저의 id 가 목록에 있으면 삭제하고 없으면 넣어줌
+         */
+
+        if (articleMapper.selectArticleLike(articleDto)) {
+            articleMapper.deleteArticleLike(articleDto);
+
+            log.info("(ArticleServiceImpl) 좋아요 삭제");
+
+        } else {
+            articleMapper.insertArticleLike(articleDto);
+
+            log.info("(ArticleServiceImpl) 좋아요 추가");
+        }
+
+//        articleMapper.updateLikeCount(articleLikeDto);
+
+    }
+
+    @Override
+    public CommentDto createComment(CommentDto commentDto) throws Exception {
+        log.info("(ArticleServiceImpl) 댓글 작성 서비스 시작");
+        articleMapper.createComment(commentDto);
+
+        return commentDto;
+    }
+
+    @Override
+    public int isLike(ArticleDto articleDto) throws Exception {
+
+        // 게시물 좋아요 목록에 접속 유저가 있으면 1 없으면 0 리턴
+        if (articleMapper.selectArticleLike(articleDto)) {
+            return 1;
+
+        } else {
+            return 0;
+
+        }
+    }
+
 }

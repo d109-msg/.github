@@ -1,14 +1,12 @@
 package com.ssafy.msg.article.controller;
 
 
-import com.ssafy.msg.article.model.dto.ArticleCreateDto;
-import com.ssafy.msg.article.model.dto.ArticleDetailDto;
-import com.ssafy.msg.article.model.dto.ArticleDto;
-import com.ssafy.msg.article.model.dto.ArticleWithUrlDto;
+import com.ssafy.msg.article.model.dto.*;
 import com.ssafy.msg.article.model.service.ArticleService;
 import com.ssafy.msg.article.util.OpenAiUtil;
 import com.ssafy.msg.article.util.S3Util;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -34,17 +32,6 @@ import java.util.List;
 public class ArticleController {
     private final ArticleService articleService;
 
-    private final OpenAiUtil openAiUtil;
-
-    private final S3Util s3Util;
-
-    @PostMapping(value = "/analyze",
-            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public String analyzeImageTest(@RequestParam("image") MultipartFile imageFile, @RequestParam("condition") String condition) throws Exception{
-        return openAiUtil.analyzeImage(imageFile, condition);
-    }
-
     @PostMapping(value = "/create",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -60,9 +47,9 @@ public class ArticleController {
         ArticleDto articleDto = ArticleDto.builder().userId(id).articleImageList(articleCreateDto.getArticleImageList()).content(articleCreateDto.getContent()).roomId(articleCreateDto.getRoomId()).build();
 
         try {
-            ArticleDetailDto articleDetailDto = articleService.createArticle(articleDto); // 클라이언트로부터 받은 정보를 서비스에 입력
+            articleService.createArticle(articleDto); // 클라이언트로부터 받은 정보를 서비스에 입력
             log.info("(controller) articleService.createArticle 호출 -> Success");
-            return new ResponseEntity<>(articleDetailDto, HttpStatus.CREATED);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("(controller) articleService.createArticle 호출 에러", e);
             return new ResponseEntity<>("게시물 작성 실패", HttpStatus.BAD_REQUEST);
@@ -98,17 +85,28 @@ public class ArticleController {
             @ApiResponse(responseCode = "200", description = "게시물 상세 조회 성공", content ={
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ArticleDetailDto.class)) }),
             @ApiResponse(responseCode = "400", description = "게시물 상세 조회 실패", content = @Content) })
-    public ResponseEntity<?> getArticleDetail(@RequestParam("articleId") int articleId) {
+    public ResponseEntity<?> getArticleDetail(@RequestParam("articleId") int articleId, HttpServletRequest request) {
         log.info("(ArticleController) 게시물 상세보기 시작");
 
+        int userId = (Integer) request.getAttribute("id");
+
+        ArticleDto articleDto = ArticleDto.builder()
+                .id(articleId)
+                .userId(userId)
+                .build();
+
         try {
-            ArticleDetailDto articleDetailDto = articleService.getArticleDetail(articleId);
+            ArticleDetailDto articleDetailDto = articleService.getArticleDetail(articleDto); // 게시물 상세 내용 가져오기
+
             log.info("(ArticleController) 게시물 상세조회 성공");
+
             return new ResponseEntity<>(articleDetailDto, HttpStatus.OK);
         } catch (Exception e) {
             log.error("(ArticleController) 게시물 상세 조회 실패", e);
+
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } finally {
+
             log.info("(ArticleController) getArticleDetail end");
         }
 
@@ -120,16 +118,38 @@ public class ArticleController {
             @ApiResponse(responseCode = "200", description = "피드 게시물 조회 성공", content ={
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ArticleDetailDto.class)) }),
             @ApiResponse(responseCode = "400", description = "피드 게시물 조회 실패", content = @Content) })
-    public ResponseEntity<?> getFeedArticleList(HttpServletRequest request) {
+    public ResponseEntity<?> getFeedArticleList(HttpServletRequest request,
+            @Parameter(description = "마지막으로 로딩한 타겟") @RequestParam(value = "offset", required = false) Integer offset,
+            @Parameter(description = "페이지당 타겟 개수") @RequestParam(value = "limit", required = false, defaultValue = "5") Integer limit) {
+        log.info("getFollowList() -> Start");
+        log.info("getFollowList() -> Receive offset : {}", offset);
+        log.info("getFollowList() -> Receive limit : {}", limit);
 
         int userId = (Integer) request.getAttribute("id");
+        if (offset == null) {
+            offset = Integer.MAX_VALUE;
+        }
+
+        FeedParamDto feedParamDto = FeedParamDto.builder()
+                .userId(userId)
+                .offset(offset)
+                .limit(limit)
+                .build();
 
         try {
-            List<ArticleDetailDto> articleDetailDtos = articleService.getFeedArticleList(userId);
-            log.info("(ArticleController) 피드 게시물 성공 articleDeatilDtos:{}", articleDetailDtos);
-            log.info("(ArticleController) 피드 게시물 성공 articleDeatilDtos:{}", articleService.getFeedArticleList(userId));
+            List<ArticleDetailDto> articleDetailDtos = articleService.getFeedArticleList(feedParamDto);
+            int lastId = articleDetailDtos.get(articleDetailDtos.size() -1).getArticleId();
 
-            return new ResponseEntity<>(articleDetailDtos, HttpStatus.OK);
+            String currentUrl = request.getRequestURL().toString();
+            String nextUrl = currentUrl + "?offset=" + lastId + "&limit=" + limit ;
+
+            FeedResponseDto feedResponseDto = FeedResponseDto.builder()
+                    .articleDetailDtos(articleDetailDtos)
+                    .nextUrl(nextUrl)
+                    .build();
+            log.info("(ArticleController) getFeedArticleList() 성공");
+
+            return new ResponseEntity<>(feedResponseDto, HttpStatus.OK);
         } catch (Exception e) {
             log.error("(ArticleController) 피드 게시물 조회 실패", e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -137,5 +157,66 @@ public class ArticleController {
             log.info("(ArticleController) getFeedArticleList end");
         }
     }
+
+    @PostMapping(value = "/like")
+    @Operation(summary = "게시물 좋아요", description = "게시물 좋아요")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "좋아요 성공", content ={
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = ArticleLikeDto.class)) }),
+            @ApiResponse(responseCode = "400", description = "좋아요 실패", content = @Content) })
+    public ResponseEntity<?> articleLike(@RequestParam("articleId") int articleId, HttpServletRequest request) {
+        log.info("(ArticleController) articleLike() -> 게시물 좋아요 시작");
+
+        int userId = (Integer) request.getAttribute("id");
+
+        ArticleDto articleDto = ArticleDto.builder().
+                userId(userId).
+                id(articleId).
+                build();
+
+        try {
+            articleService.articleLike(articleDto);
+            log.info("(ArticleController) 좋아요 누르기 성공");
+            return new ResponseEntity<>(articleDto, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("(ArticleController) 좋아요 누르기 실패", e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } finally {
+            log.info("(ArticleController) 좋아요 누르기 끝");
+        }
+
+    }
+
+    @PostMapping(value = "/comment")
+    @Operation(summary = "댓글 작성", description = "댓글 작성하기")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "댓글 작성 성공" , content ={
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CommentDto.class)) }),
+            @ApiResponse(responseCode = "400", description = "댓글 작성 실패", content = @Content) })
+    public ResponseEntity<?> createComment(HttpServletRequest request,
+                                           @RequestParam("articleId") int articleId,
+                                           @RequestParam("content") String content,
+                                           @RequestParam("parentCommentId") Integer parentCommentId ) {
+
+        CommentDto commentDto = CommentDto.builder()
+                .userId((Integer) request.getAttribute("id"))
+                .articleId(articleId)
+                .content(content)
+                .parentCommentId(parentCommentId > 0 ? parentCommentId : null) // 유효한 ID가 아니라면 null을 할당
+                .build();
+        log.info("(controller) createComment() 댓글 작성 시작 {}", commentDto);
+
+        try {
+            articleService.createComment(commentDto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            log.error("(controller) 댓글 작성 실패", e);
+            return new ResponseEntity<>(commentDto, HttpStatus.BAD_REQUEST);
+        } finally {
+            log.info("(ArticleController) 끝");
+        }
+
+    }
+
 
 }
