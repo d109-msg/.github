@@ -32,7 +32,7 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ## 🖇 아키텍처
 
-<img src="./src/architecture.png" width="50%" height="70%">
+<img src="./src/architecture.png" width="100%" height="70%">
 
 <br/><br/>
 
