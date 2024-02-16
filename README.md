@@ -1,6 +1,6 @@
 # 🕵️ MSG - Mafia in SNS Game
 
-<img src="./src/msg.png" width="50%" height="70%">
+<img src="./src/msg.png" width="100%" height="70%">
 <br/><br/>
 
 ## 📆 프로젝트 기간
