@@ -1,15 +1,15 @@
 # 🕵️ MSG - Mafia in SNS Game
 
-<img src="./src/msg.png" width="100%" height="100%">
+<img src="./src/msg.png" width="50%" height="70%">
 <br/><br/>
 
 ## 📆 프로젝트 기간
 
 2024.12.28 ~ 2024.02.16
 
-### Frontend
+### [Frontend Branch](https://lab.ssafy.com/s10-webmobile2-sub2/S10P12D109/-/blob/fe/dev/README.md?ref_type=heads)
 
-### Backend
+### [Backend Branch](https://lab.ssafy.com/s10-webmobile2-sub2/S10P12D109/-/tree/be/dev?ref_type=heads)
 
 <br/><br/>
 
@@ -32,7 +32,7 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ## 🖇 아키텍처
 
-<img src="./src/architecture.png" width="100%" height="100%">
+<img src="./src/architecture.png" width="50%" height="70%">
 
 <br/><br/>
 
@@ -121,11 +121,11 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 #### 마피아 직업
 
-<img src="./src/mafia_occup.png" width="100%" height="100%">
+<img src="./src/mafia_occup.png" width="50%" height="70%">
 
 #### 시민 직업
 
-<img src="./src/civil_occup.png" width="100%" height="100%">
+<img src="./src/civil_occup.png" width="50%" height="70%">
 
 <br/><br/>
 
@@ -199,19 +199,19 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ### 1. 기능 명세서
 
-<img src="./src/api_1.png" width="100%" height="100%">
-<img src="./src/api_2.png" width="100%" height="100%">
-<img src="./src/api_3.png" width="100%" height="100%">
-<img src="./src/api_4.png" width="100%" height="100%">
-<img src="./src/api_5.png" width="100%" height="100%">
+<img src="./src/api_1.png" width="50%" height="70%">
+<img src="./src/api_2.png" width="50%" height="70%">
+<img src="./src/api_3.png" width="50%" height="70%">
+<img src="./src/api_4.png" width="50%" height="70%">
+<img src="./src/api_5.png" width="50%" height="70%">
 
 ### 2. 와이어 프레임
 
-<img src="./src/MSG_WireFrame_img.JPG" width="100%" height="100%">
+<img src="./src/MSG_WireFrame_img.JPG" width="50%" height="70%">
 
 ### 3. ERD
 
-<img src="./src/MSG_ERD.png" width="100%" height="100%">
+<img src="./src/MSG_ERD.png" width="50%" height="70%">
 
 <!-- ### 4. 시퀀스 다이어그램 -->
 
