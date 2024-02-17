@@ -200,7 +200,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 - **Java**: v17.0.9
 - **Spring Boot**: v3.2.1
 - **Gradle**: v8.5
-- **JWT**
+- **JSON Web Token**
 - **WebSocket**
 - **STOMP**
 - **IntelliJ**
@@ -210,7 +210,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 - **Redis**: v5.0.7
 - **MongoDB**: v7.0.5
 - **MariaDB**: v10.3.39
-- **AWS S3**
+- **Amazon Web Services S3**
 
 ### 4. Infrastructure
 
@@ -241,31 +241,15 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 
 ## 📄 산출물
 
-### 1. 기능 명세서
+### [1. 기능 명세서](https://sly-level-724.notion.site/739ff30801d74c3599990a159ab7ad68?v=d0b5f970bd9c4cbd83c1c192c00ba12a&pvs=4)
 
-<img src="./src/api_1.png" width="50%" height="70%">
-<img src="./src/api_2.png" width="50%" height="70%">
-<img src="./src/api_3.png" width="50%" height="70%">
-<img src="./src/api_4.png" width="50%" height="70%">
-<img src="./src/api_5.png" width="50%" height="70%">
+### [2. 와이어프레임](https://www.figma.com/file/NB5h2BQt0EP61ShH4c2ILN/MSG-PROJECT?type=design&node-id=0-1&mode=design)
 
-### 2. 와이어 프레임
+### [3. ER 다이어그램](https://www.erdcloud.com/d/PQhNKQG32dPdfDz8i)
 
-<img src="./src/MSG_WireFrame_img.JPG" width="50%" height="70%">
-
-### 3. ERD
-
-<img src="./src/MSG_ERD.png" width="50%" height="70%">
-
-<!-- ### 4. 시퀀스 다이어그램 -->
-
-<!-- ### 5. 클래스 다이어그램 -->
-
-<!-- ## 📃 프로젝트 구조 -->
+### [4. 시퀀스 다이어그램](https://drive.google.com/file/d/1orYuNhYWD8HfmYrHk7kIVUhlJ_i3BWFZ/view?usp=sharing)
 
 <br/><br/>
-
-<!-- ## 📃 프로젝트 결과물 -->
 
 ## 📋 결과물
 
@@ -274,6 +258,76 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 ### [2. 최종 발표자료](pt/final.pdf)
 
 ### [3. 포팅 매뉴얼](exec/Manual.md)
+
+<br/><br/>
+
+## 📂 프로젝트 구조
+
+### 1. Frontend
+
+```
+src
+├─ App.vue
+├─ assets
+│  └─ css
+├─ components
+│  ├─ Signup.vue
+│  ├─ SocialSign.vue
+│  ├─ ChangePassword
+│  ├─ DetailPage
+│  ├─ FeedPage
+│  ├─ FindPasswordPage
+│  ├─ GamePage
+│  ├─ HomePage
+│  ├─ ImageEdit
+│  ├─ LoadingSpinner
+│  ├─ LoginPage
+│  ├─ MainPage
+│  ├─ MessagePage
+│  ├─ MiniProfile
+│  ├─ MyPage
+│  ├─ NavBar
+│  ├─ RoomDetail
+│  └─ UserPage
+├─ fonts
+├─ main.js
+├─ router.js
+├─ server.js
+└─ store
+```
+
+### 2. Backend
+
+```
+src
+├─ main
+│  ├─ generated
+│  ├─ java
+│  │  └─ com
+│  │     └─ ssafy
+│  │        └─ msg
+│  │           ├─ BackendApplication.java
+│  │           ├─ config
+│  │           ├─ aop
+│  │           ├─ article
+│  │           ├─ chat
+│  │           ├─ game
+│  │           ├─ handler
+│  │           ├─ interceptor
+│  │           ├─ message
+│  │           ├─ notification
+│  │           ├─ scheduler
+│  │           ├─ test
+│  │           ├─ user
+│  │           └─ webpush
+│  └─ resources
+│     ├─ application-secret.yml
+│     ├─ application-test.yml
+│     ├─ application.yml
+│     ├─ mapper
+│     └─ service-account.json
+└─ test
+```
 
 <br/><br/>
 
@@ -460,6 +514,5 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
       <div style="text-align:center;">CI/CD</div>
       <div style="text-align:center;">JWT 인증/인가 구현</div>
     </td>
-
   </tr>
 </table>

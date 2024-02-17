@@ -1,6 +1,6 @@
 # 포팅 매뉴얼
 
-<br/>
+<br/><br/>
 
 ## 환경 변수
 
@@ -48,56 +48,16 @@ spring:
     mongodb:
       uri: ENC({MONGO_DB_URI})
 
-
 ```
 
-<br/>
-
-## 주요 기술
-
-### Frontend
-
-- Node.js : v20.10.0
-- Vue.js : v3.2.13
-- Axios
-- IDE : Visual Studio Code
-
-### Backend
-
-- Java : v17.0.9
-- Spring Boot : v3.2.1
-- WebSocket
-- STOMP
-- IDE : IntelliJ
-
-### Database
-
-- Redis : v5.0.7
-- MongoDB : v7.0.5
-- MariaDB : v10.3.39
-- AWS S3
-
-### Infrastructure
-
-- Docker : v25.0.1
-- Docker Compose : v2.24.3
-- Docker Distribution : v2.8.3
-- NGINX : v1.25.3
-- Jenkins : v2.444
-
-### ETC
-
-- Firebase
-- OpenAI
-
-<br/>
+<br/><br/>
 
 ## 설치 및 실행
 
 본 프로젝트는 Jenkins 서버, Application 서버, MariaDB 서버, MongoDB 서버로 구성되어 있습니다.  
 기본적으로 4G 이상의 RAM 환경에 설치하는 것을 권장합니다.
 
-<br/>
+<br/><br/>
 
 ### 1. Redis
 
@@ -147,7 +107,7 @@ redis-cli
 auth {비밀번호}
 ```
 
-<br/>
+<br/><br/>
 
 ### 2. MariaDB
 
@@ -199,7 +159,7 @@ GRANT ALL PRIVILEGES ON *.* TO '{사용자명}'@'%';
 flush privileges;
 ```
 
-<br/>
+<br/><br/>
 
 ### 3. MongoDB
 
@@ -312,7 +272,7 @@ db.createUser({
 })
 ```
 
-<br/>
+<br/><br/>
 
 ### 4. Jenkins
 
@@ -590,7 +550,7 @@ pipeline {
 }
 ```
 
-<br/>
+<br/><br/>
 
 ### 5. Docker Distribution
 
@@ -634,7 +594,7 @@ sudo systemctl restart docker
 
 5.5. 레지스트리로부터 이미지를 내려받는 애플리케이션 EC2에도 4.2~4.4 수행
 
-<br/>
+<br/><br/>
 
 ### 6. NGINX
 
@@ -856,7 +816,7 @@ docker-compose -f docker-compose-nginx.yml down
 docker-compose -f docker-compose-nginx.yml up -d
 ```
 
-<br/>
+<br/><br/>
 
 ### 7. Blue Green Server
 
