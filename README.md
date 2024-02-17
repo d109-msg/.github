@@ -1,11 +1,16 @@
-# 🕵️ MSG - Mafia in SNS Game
+# 🕵️ Mafia in SNS Game (MSG)
 
 <img src="./src/msg.png" width="100%" height="70%">
+
 <br/><br/>
 
 ## 📆 프로젝트 기간
 
-2024.12.28 ~ 2024.02.16
+### 2024.12.28 ~ 2024.02.16
+
+<br/><br/>
+
+## 🔎 프로젝트 코드
 
 ### [Frontend Branch](https://lab.ssafy.com/s10-webmobile2-sub2/S10P12D109/-/blob/fe/dev/README.md?ref_type=heads)
 
@@ -15,14 +20,17 @@
 
 ## 📌 배경
 
-요즘 대부분 사람들이 SNS를 즐기는 시대 입니다.  
-그러나 최근 지나친 자기과시와 인플루언서 및 기업들의 다량 홍보로 도배되는 SNS의 문화에 적응 하지 못하는 소외계층이 생기고 있습니다.  
-SNS에 거부감이 있는 분들은 저희 서비스에서 재밌고 편안한 소통을 즐기길 바라며 MSG를 기획하게 되었습니다.
+오늘날 대부분 사람들이 SNS를 즐기고 있습니다.  
+그러나 최근 지나친 자기과시와 인플루언서 및 기업들의 홍보로 도배되는 경우가 많습니다.  
+기존 SNS에 거부감이 있는 사람들이 편안하고 재밌게 소통하길 바라며 Mafia in SNS Group (이하 MSG)를 기획했습니다.
+
 <br/><br/>
 
 ## 📌 개요
 
-MSG는 mafia in sns game의 약자입니다. MSG는 사진을 기반으로 일상을 공유하는 일반적인 sns를 즐길 수 있습니다. 여기에 더불어 리얼 타임으로 진행되는 mafia game에도 참여가 가능 합니다. 게임에 참여하게 되면 매일매일 주어지는 미션을 일상 사진을 업로드 하면서 수행하게 되며, 자연스럽게 서로의 일상을 공유하게 됩니다.
+MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대로 즐길 수 있습니다.  
+여기에 더불어 리얼 타임으로 진행되는 마피아 게임에도 참여가 가능 합니다.  
+게임에 참여하면 매일 주어지는 미션으로 일상 사진을 업로드하면서 자연스럽게 서로의 일상을 공유하게 됩니다.
 
 첫번째 장점은 실시간 기반으로 진행되는 mafia 게임 시스템 입니다. 같은 시간에 모여 게임을 진행해야하는 부담감을 줄이고, 여유 시간을 활용하여 미션을 진행 할 수 있다는 것이 큰 장점 입니다.
 두번째로 서로의 사진을 보며 소통하고, 함께 게임을 수행하면서 유대감이 생기며 인터넷 상에서의 친구 관계가 형성 됩니다. 일상의 지루함을 해소하며 관계를 형성되는 것은 외로움이 있는 분들에게 많은 도움이 될 수 있습니다.
@@ -234,10 +242,10 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ### 2. 메인 페이지
 
-<div style="display: flex;">
+<p style="display: flex;">
     <img src="./src/MainPage_light.png" width="50%" height="70%">
     <img src="./src/MainPage_dark.png" width="50%" height="70%">
-</div>
+</p>
 
 <br/>
 
@@ -250,10 +258,10 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ### 3. 피드 상세 페이지
 
-<div style="display: flex;">
+<p style="display: flex;">
     <img src="./src/FeedDetailPage_light.PNG" width="50%" height="70%">
     <img src="./src/FeedDetailPage_dark.PNG" width="50%" height="70%">
-</div>
+</p>
 
 <br/>
 
@@ -264,10 +272,10 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ### 4. 게임 페이지
 
-<div style="display: flex;">
+<p style="display: flex;">
     <img src="./src/GamePage_light.png" width="50%" height="70%">
     <img src="./src/GamePage_dark.png" width="50%" height="70%">
-</div>
+</p>
 
 <br/>
 
@@ -279,10 +287,10 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ### 5. 게임 상세 페이지
 
-<div style="display: flex;">
+<p style="display: flex;">
     <img src="./src/RoomDetail_light.png" width="50%" height="70%">
     <img src="./src/RoomDetail_dark.png" width="50%" height="70%">
-</div>
+</p>
 
 <br/>
 
@@ -294,10 +302,10 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ### 6. 메시지 페이지
 
-<div style="display: flex;">
+<p style="display: flex;">
     <img src="./src/MessagePage_light.png" width="50%" height="70%">
     <img src="./src/MessagePage_dark.png" width="50%" height="70%">
-</div>
+</p>
 
 <br/>
 
@@ -308,10 +316,10 @@ MSG를 이용하다 보면 자신의 추억들이 사진으로 남게 되며 뿌
 
 ### 7. 마이 페이지
 
-<div style="display: flex;">
+<p style="display: flex;">
     <img src="./src/MyPage_light.png" width="50%" height="70%">
     <img src="./src/MyPage_dark.png" width="50%" height="70%">
-</div>
+</p>
 
 <br/>
 
