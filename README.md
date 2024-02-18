@@ -64,9 +64,9 @@
 
 ## 🔎 코드
 
-### [1. Frontend](https://lab.ssafy.com/s10-webmobile2-sub2/S10P12D109/-/blob/fe/dev/README.md?ref_type=heads)
+### [1. Frontend](https://github.com/ssafy-msg/frontend)
 
-### [2. Backend](https://lab.ssafy.com/s10-webmobile2-sub2/S10P12D109/-/tree/be/dev?ref_type=heads)
+### [2. Backend](https://github.com/ssafy-msg/backend)
 
 <br/><br/>
 
