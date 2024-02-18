@@ -272,7 +272,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 
 ### [2. 최종 발표자료](pt/final.pdf)
 
-### [3. 포팅 매뉴얼](exec/Manual.md)
+### [3. 포팅 매뉴얼](exec/manual.md)
 
 <br/><br/>
 
