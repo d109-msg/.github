@@ -452,7 +452,7 @@ src
   <tr>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/hyunjiihye"><img src="src/hyunjiihye.jpg" height="150px" alt="현지혜"></a>
+      <a href="https://github.com/hyunjiihye"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/hyunjiihye.jpg" height="150px" alt="현지혜"></a>
       <br/>
       <b><a href="https://github.com/hyunjiihye" style="text-align:center;">현지혜</a></b>
       <br/>
@@ -464,7 +464,7 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/suehwanBoo"><img src="src/suehwanBoo.jpg" height="150px" alt="부수환"></a>
+      <a href="https://github.com/suehwanBoo"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/suehwanBoo.jpg" height="150px" alt="부수환"></a>
       <br/>
       <b><a href="https://github.com/suehwanBoo" style="text-align:center;">부수환</a></b>
       <br/>
@@ -483,7 +483,7 @@ src
   <tr>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/LeeChangon"><img src="src/LeeChangon.jpg" height="150px" alt="이창곤"></a>
+      <a href="https://github.com/LeeChangon"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/LeeChangon.jpg" height="150px" alt="이창곤"></a>
       <br/>
       <b><a href="https://github.com/LeeChangon" style="text-align:center;">이창곤</a></b>
       <br/>
@@ -495,7 +495,7 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/yi219"><img src="src/yi219.jpg" height="150px" alt="금예인"></a>
+      <a href="https://github.com/yi219"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/yi219.jpg" height="150px" alt="금예인"></a>
       <br/>
       <b><a href="https://github.com/yi219" style="text-align:center;">금예인</a></b>
       <br/>
@@ -507,7 +507,7 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/Limkyuhwan"><img src="src/Limkyuhwan.jpg" height="150px" alt="임규환"></a>
+      <a href="https://github.com/Limkyuhwan"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/Limkyuhwan.jpg" height="150px" alt="임규환"></a>
       <br/>
       <b><a href="https://github.com/Limkyuhwan" style="text-align:center;">임규환</a></b>
       <br/>
@@ -519,7 +519,7 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/ubermensch100326"><img src="src/ubermensch100326.jpg" height="150px" alt="최호조"></a>
+      <a href="https://github.com/ubermensch100326"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/ubermensch100326.jpg" height="150px" alt="최호조"></a>
       <br/>
       <b><a href="https://github.com/ubermensch100326" style="text-align:center;">최호조</a></b>
       <br/>
