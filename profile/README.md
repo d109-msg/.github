@@ -1,6 +1,6 @@
 # 🕵️ Mafia in SNS Game (MSG)
 
-<img src="./src/msg.png" width="100%" height="70%">
+<img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/msg.png" width="100%" height="70%">
 
 <p align="center">
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
@@ -92,7 +92,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 
 ## 🏗️ 아키텍처
 
-<img src="./src/architecture.png" width="100%" height="70%">
+<img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/architecture.png" width="100%" height="70%">
 
 <br/><br/>
 
@@ -268,11 +268,11 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 
 ## 📋 결과물
 
-### [1. 중간 발표자료](./pt/midterm.pdf)
+### [1. 중간 발표자료](https://github.com/ssafy-msg/.github/blob/main/profile/pt/midterm.pdf)
 
-### [2. 최종 발표자료](./pt/final.pdf)
+### [2. 최종 발표자료](https://github.com/ssafy-msg/.github/blob/main/profile/pt/final.pdf)
 
-### [3. 포팅 매뉴얼](./exec/manual.md)
+### [3. 포팅 매뉴얼](https://github.com/ssafy-msg/.github/blob/main/profile/exec/manual.md)
 
 <br/><br/>
 
@@ -356,8 +356,8 @@ src
 ### 2. 메인 페이지
 
 <div style="display: flex;">
-    <img src="./src/MainPage_light.png" width="50%" height="70%">
-    <img src="./src/MainPage_dark.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_light.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="50%" height="70%">
 </div>
 
 <br/>
@@ -371,8 +371,8 @@ src
 ### 3. 피드 상세 페이지
 
 <div style="display: flex;">
-    <img src="./src/FeedDetailPage_light.PNG" width="50%" height="70%">
-    <img src="./src/FeedDetailPage_dark.PNG" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="50%" height="70%">
 </div>
 
 <br/>
@@ -384,8 +384,8 @@ src
 ### 4. 게임 페이지
 
 <div style="display: flex;">
-    <img src="./src/GamePage_light.png" width="50%" height="70%">
-    <img src="./src/GamePage_dark.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_light.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="50%" height="70%">
 </div>
 
 <br/>
@@ -397,8 +397,8 @@ src
 ### 5. 게임 상세 페이지
 
 <div style="display: flex;">
-    <img src="./src/RoomDetail_light.png" width="50%" height="70%">
-    <img src="./src/RoomDetail_dark.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="50%" height="70%">
 </div>
 
 <br/>
@@ -411,8 +411,8 @@ src
 ### 6. 메시지 페이지
 
 <div style="display: flex;">
-    <img src="./src/MessagePage_light.png" width="50%" height="70%">
-    <img src="./src/MessagePage_dark.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_light.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="50%" height="70%">
 </div>
 
 <br/>
@@ -423,8 +423,8 @@ src
 ### 7. 마이 페이지
 
 <div style="display: flex;">
-    <img src="./src/MyPage_light.png" width="50%" height="70%">
-    <img src="./src/MyPage_dark.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_light.png" width="50%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="50%" height="70%">
 </div>
 
 <br/>
