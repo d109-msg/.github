@@ -1,0 +1,140 @@
+pipeline {
+    agent any
+    stages {
+        stage('GitLab Clone') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
+                        git credentialsId: 'gitlab-id-pw', branch: 'be/dev', url: GIT_URL
+                    }
+                }
+            }
+        }
+        stage('Project Build') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'application-yml', variable: 'APP_YML')]) {
+                        withCredentials([file(credentialsId: 'application-secret-yml', variable: 'APP_SECRET_YML')]) {
+                            withCredentials([file(credentialsId: 'service-account-json', variable: 'SERVICE_JSON')]) {
+                                sh '''
+                                cd ./backend/src/main/resources &&
+                                chmod -R 755 . &&
+                                cp ${APP_YML} . &&
+                                cp ${APP_SECRET_YML} . &&
+                                cp ${SERVICE_JSON} .
+                                '''
+                                sh '''
+                                cd ./backend &&
+                                chmod +x gradlew &&
+                                ./gradlew clean build --exclude-task test
+                                '''
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage('Docker Build and Push') {
+            steps {
+                sh 'pwd'
+                sh 'ls -al'
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-path', usernameVariable: 'DOCKER_REPO', passwordVariable: 'DOCKER_PROJECT')]) {
+                        withCredentials([string(credentialsId: 'docker-registry-url', variable: 'REGISTRY_URL')]) {
+                            sh 'cd ./backend && sudo docker build --platform linux/amd64 -t ${REGISTRY_URL}/${DOCKER_PROJECT} .'
+                            sh 'cd ./backend && sudo docker image push ${REGISTRY_URL}/${DOCKER_PROJECT}'
+                            sh 'sudo docker system prune -a -f'
+                            echo 'docker push Success!!'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Project Deploy') {
+            steps {
+                sh 'pwd'
+                script {
+                    withCredentials([string(credentialsId: 'application-ip', variable: 'EC2_SERVER_IP')]) {
+                        withCredentials([usernamePassword(credentialsId: 'docker-hub-path', usernameVariable: 'DOCKER_REPO', passwordVariable: 'DOCKER_PROJECT')]) {
+                            def status = sh(script: 'curl -o /dev/null -w "%{http_code}" "https://${EC2_SERVER_IP}/api/test/env"', returnStdout: true).trim()
+                            echo "status: ${status}"
+                            def currentUpstream = 'green'
+                            if (status == '200') {
+                                currentUpstream = sh(script: 'curl -s "https://${EC2_SERVER_IP}/api/test/env"', returnStdout: true).trim()
+                            }
+                            def currentPort = currentUpstream == 'blue' ? 8080 : 8081
+                            def stoppedPort = currentUpstream == 'blue' ? 8081 : 8080
+                            def targetUpstream = currentUpstream == 'blue' ? 'green' : 'blue'
+                            echo "targetUpstream: ${targetUpstream}"
+                            echo "currentUpstream: ${currentUpstream}"
+                            sshagent(credentials: ['application-pem']) {
+                                withCredentials([usernamePassword(credentialsId: 'docker-hub-id-pw', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                    withCredentials([string(credentialsId: 'docker-registry-url', variable: 'REGISTRY_URL')]) {
+                                        sh """
+                                            ssh ubuntu@${EC2_SERVER_IP} 'sudo docker pull ${REGISTRY_URL}/${DOCKER_PROJECT}:latest &&
+                                            sudo docker-compose -f blue-green/docker-compose-${targetUpstream}.yml up -d'
+                                        """
+                                    }
+                                }
+                            }
+                            retry(10) {
+                                sh(script: 'curl -s https://${EC2_SERVER_IP}:${stoppedPort}/api/test/env', returnStatus: true) == 0
+                                sleep time: 10, unit: 'SECONDS'
+                            }
+                            sshagent(credentials: ['application-pem']) {
+                                sh """
+                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker exec -i nginx bash -c "chmod +x ./etc/nginx/conf.d/deploy.sh"'
+                                """
+                                sh """
+                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker exec -i nginx bash -c "./etc/nginx/conf.d/deploy.sh ${targetUpstream}"'
+                                """
+                                sh """
+                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker exec -i nginx bash -c "nginx -s reload"'
+                                """
+                            }
+                            sshagent(credentials: ['application-pem']) {
+                                sh """
+                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker-compose -f blue-green/docker-compose-${currentUpstream}.yml down'
+                                """
+                                sh """
+                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker system prune -a -f'
+                                """
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            script {
+                withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
+                    withCredentials([string(credentialsId: 'mattermost-url', variable: 'MM_URL')]) {
+                        def Author_ID = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
+                        def Author_Name = sh(script: 'git show -s --pretty=%ae', returnStdout: true).trim()
+                        mattermostSend(color: 'good',
+                                      message: "[Backend] Build Success\nby ${Author_ID} (${Author_Name})\n(<${GIT_URL}|Details>)",
+                                      endpoint: "${MM_URL}",
+                                      channel: 'mafia_in_sns_game')
+                    }
+                }
+            }
+        }
+        failure {
+            script {
+                withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
+                    withCredentials([string(credentialsId: 'mattermost-url', variable: 'MM_URL')]) {
+                        def Author_ID = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
+                        def Author_Name = sh(script: 'git show -s --pretty=%ae', returnStdout: true).trim()
+                        mattermostSend(color: 'danger',
+                                      message: "[Backend] Build Fail\n${Author_ID} (${Author_Name})\n(<${GIT_URL}|Details>)",
+                                      endpoint: "${MM_URL}",
+                                      channel: 'mafia_in_sns_game')
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,164 @@
+spring:
+  profiles:
+    active: local
+    group:
+      local: local, common, secret, test
+      blue: blue, common, secret
+      green: green, common, secret
+
+server:
+  env: blue
+  servlet:
+    context-path: /api
+
+---
+spring:
+  datasource:
+    jdbc-url: ${JDBC_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+
+    mongodb:
+      uri: ${MONGODB_URI}
+
+  config:
+    activate:
+      on-profile: local
+
+server:
+  port: 8080
+
+server-address: ${SERVER_ADDRESS}
+server-name: local-server
+
+oauth2:
+  client:
+    registration:
+      google:
+        redirect-uri: ${GOOGLE_REDIRECT_URI}
+
+      naver:
+        redirect-uri: ${NAVER_REDIRECT_URI}
+
+      kakao:
+        redirect-uri: ${KAKAO_REDIRECT_URI}
+
+---
+spring:
+  datasource:
+    jdbc-url: ${JDBC_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+
+    mongodb:
+      host: ${MONGODB_HOST}
+      port: ${MONGODB_PORT}
+      database: ${MONGODB_DATABASE}
+      username: ${MONGODB_USERNAME}
+      password: ${MONGODB_PASSWORD}
+
+  config:
+    activate:
+      on-profile: blue
+
+server:
+  port: 8080
+
+server-address: ${SERVER_ADDRESS}
+server-name: blue-server
+
+oauth2:
+  client:
+    registration:
+      google:
+        redirect-uri: ${GOOGLE_REDIRECT_URI}
+
+      naver:
+        redirect-uri: ${NAVER_REDIRECT_URI}
+
+      kakao:
+        redirect-uri: ${KAKAO_REDIRECT_URI}
+
+---
+spring:
+  datasource:
+    jdbc-url: ${JDBC_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+
+    mongodb:
+      host: ${MONGODB_HOST}
+      port: ${MONGODB_PORT}
+      database: ${MONGODB_DATABASE}
+      username: ${MONGODB_USERNAME}
+      password: ${MONGODB_PASSWORD}
+
+  config:
+    activate:
+      on-profile: green
+
+server:
+  port: 8081
+
+server-address: ${SERVER_ADDRESS}
+server-name: green-server
+
+oauth2:
+  client:
+    registration:
+      google:
+        redirect-uri: ${GOOGLE_REDIRECT_URI}
+
+      naver:
+        redirect-uri: ${NAVER_REDIRECT_URI}
+
+      kakao:
+        redirect-uri: ${KAKAO_REDIRECT_URI}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: common
+
+  application:
+    name: "MSG"
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  output:
+    ansi:
+      enabled: always
+
+springdoc:
+  swagger-ui:
+    doc-expansion: none
+
+logging:
+  level:
+    root: info
+    com.ssafy.msg: debug
+
+header:
+  authorization: "Authorization"

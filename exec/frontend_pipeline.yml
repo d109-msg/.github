@@ -1,0 +1,85 @@
+pipeline {
+    agent any
+
+    tools {nodejs "NodeJS 20.10.0"}
+    stages {
+        stage('GitLab Clone') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
+                        git credentialsId: 'gitlab-id-pw', branch: 'fe/dev', url: GIT_URL
+                    }
+                }
+            }
+        }
+        stage('Project Build') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'frontend-env', variable: 'FE_ENV')]) {
+                        sh """
+                        cd ./frontend &&
+                        chmod -R 755 . &&
+                        cp ${FE_ENV} . &&
+                        npm install &&
+                        npm run build
+                        """
+                    }
+                }
+            }
+        }
+        stage('Project Copy') {
+            steps {
+                withCredentials([string(credentialsId: 'application-ip', variable: 'EC2_SERVER_IP')]) {
+                    sshagent(credentials: ['application-pem']) {
+                        sh """
+                            scp -r ./frontend/dist ubuntu@${EC2_SERVER_IP}:/home/ubuntu/nginx
+                        """
+                    }
+                }
+            }
+        }
+        stage('Project Deploy') {
+            steps {
+                withCredentials([string(credentialsId: 'application-ip', variable: 'EC2_SERVER_IP')]) {
+                    sshagent(credentials: ['application-pem']) {
+                        sh """
+                            ssh ubuntu@${EC2_SERVER_IP} 'sudo docker exec -i nginx bash -c "nginx -s reload"'
+                        """
+                        sh 'sudo docker system prune -a -f'
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            script {
+                withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
+                    withCredentials([string(credentialsId: 'mattermost-url', variable: 'MM_URL')]) {
+                        def Author_ID = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
+                        def Author_Name = sh(script: 'git show -s --pretty=%ae', returnStdout: true).trim()
+                        mattermostSend(color: 'good',
+                                       message: "[Frontend] Build Success\nby ${Author_ID} (${Author_Name})\n(<${GIT_URL}|Details>)",
+                                       endpoint: "${MM_URL}",
+                                       channel: 'mafia_in_sns_game')
+                    }
+                }
+            }
+        }
+        failure {
+            script {
+                withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
+                    withCredentials([string(credentialsId: 'mattermost-url', variable: 'MM_URL')]) {
+                        def Author_ID = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
+                        def Author_Name = sh(script: 'git show -s --pretty=%ae', returnStdout: true).trim()
+                        mattermostSend(color: 'danger',
+                                       message: "[Frontend] Build Fail\n${Author_ID} (${Author_Name})\n(<${GIT_URL}|Details>)",
+                                       endpoint: "${MM_URL}",
+                                       channel: 'mafia_in_sns_game')
+                    }
+                }
+            }
+        }
+    }
+}

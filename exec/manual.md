@@ -1,63 +1,28 @@
-# 포팅 매뉴얼
+# 📖 포팅 매뉴얼
 
 <br/><br/>
 
-## 환경 변수
+## 🍀 환경 변수
 
-```
-# 소셜 로그인
-oauth2:
-  client:
-    registration:
-      google:
-        client-id: ENC({GOOGLE_CLIENT_ID})
-        client-secret: ENC({GOOGLE_CLIENT_SECRET})
+### 1. Frontend
 
-      naver:
-        client-id: ENC({NAVER_CLIENT_ID})
-        client-secret: ENC({NAVER_CLIENT_SECRET})
+- [frontend/.env](./.env)
+- [frontend/src/server.js](./server.js)
+- [frontend/public/firebase-messaging-sw.js](./firebase-messaging-sw.js)
 
-      kakao:
-        client-id: ENC({KAKAO_CLIENT_ID})
-        client-secret: ENC({KAKAO_CLIENT_SECRET})
+### 2. Backend
 
-# OpenAI
-open-ai:
-  secret-key: ENC({OPENT_AI_SECRET_KEY})
-
-# AWS S3
-cloud:
-  aws:
-    credentials:
-      access-key: ENC({AWS_ACCESS_KEY})
-      secret-key: ENC({AWS_SECRET_KEY})
-
-# DB
-spring:
-  datasource:
-    jdbc-url: ENC({JDBC_URL})
-    username: ENC({MARIA_DB_USERNAME})
-    password: ENC({MARIA_DB_PASSWORD})
-
-  data:
-    redis:
-      host: ENC({REDIS_HOST})
-      port: ENC({REDIS_PORT})
-      password: ENC({REDIS_PASSWORD})
-
-    mongodb:
-      uri: ENC({MONGO_DB_URI})
-
-```
+- [backend/src/main/resources/application.yml](./application.yml)
+- [backend/src/main/resources/application-secret.yml](./application-secret.yml)
+- [backend/src/main/resources/application-test.yml](./application-test.yml)
+- [backend/src/main/resources/service-accound.json](./service-account.json)
 
 <br/><br/>
 
-## 설치 및 실행
+## 🛠️ 설치 및 실행
 
 본 프로젝트는 Jenkins 서버, Application 서버, MariaDB 서버, MongoDB 서버로 구성되어 있습니다.  
 기본적으로 4G 이상의 RAM 환경에 설치하는 것을 권장합니다.
-
-<br/><br/>
 
 ### 1. Redis
 
@@ -107,7 +72,7 @@ redis-cli
 auth {비밀번호}
 ```
 
-<br/><br/>
+<br/>
 
 ### 2. MariaDB
 
@@ -159,7 +124,7 @@ GRANT ALL PRIVILEGES ON *.* TO '{사용자명}'@'%';
 flush privileges;
 ```
 
-<br/><br/>
+<br/>
 
 ### 3. MongoDB
 
@@ -272,7 +237,7 @@ db.createUser({
 })
 ```
 
-<br/><br/>
+<br/>
 
 ### 4. Jenkins
 
@@ -315,240 +280,13 @@ services:
                         - /var/run/docker.sock:/var/run/docker.sock
 ```
 
-4.3. 프론트엔드 파이프라인 작성
+4.3. Credentials 등록
 
-```
-pipeline {
-    agent any
+<img src="./credentials.png" width="50%" height="70%">
 
-    tools {nodejs "NodeJS 20.10.0"}
-    stages {
-        stage('GitLab Clone') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
-                        git credentialsId: 'gitlab-id-pw', branch: 'fe/dev', url: GIT_URL
-                    }
-                }
-            }
-        }
-        stage('Project Build') {
-            steps {
-                script {
-                    withCredentials([file(credentialsId: 'frontend-env', variable: 'FE_ENV')]) {
-                        sh """
-                        cd ./frontend &&
-                        chmod -R 755 . &&
-                        cp ${FE_ENV} . &&
-                        npm install &&
-                        npm run build
-                        """
-                    }
-                }
-            }
-        }
-        stage('Project Copy') {
-            steps {
-                withCredentials([string(credentialsId: 'application-ip', variable: 'EC2_SERVER_IP')]) {
-                    sshagent(credentials: ['application-pem']) {
-                        sh """
-                            scp -r ./frontend/dist ubuntu@${EC2_SERVER_IP}:/home/ubuntu/nginx
-                        """
-                    }
-                }
-            }
-        }
-        stage('Project Deploy') {
-            steps {
-                withCredentials([string(credentialsId: 'application-ip', variable: 'EC2_SERVER_IP')]) {
-                    sshagent(credentials: ['application-pem']) {
-                        sh """
-                            ssh ubuntu@${EC2_SERVER_IP} 'sudo docker exec -i nginx bash -c "nginx -s reload"'
-                        """
-                        sh 'sudo docker system prune -a -f'
-                    }
-                }
-            }
-        }
-    }
+[4.4. 프론트엔드 파이프라인 작성](./frontend_pipeline.yml)
 
-    post {
-        success {
-            script {
-                withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
-                    withCredentials([string(credentialsId: 'mattermost-url', variable: 'MM_URL')]) {
-                        def Author_ID = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
-                        def Author_Name = sh(script: 'git show -s --pretty=%ae', returnStdout: true).trim()
-                        mattermostSend(color: 'good',
-                                       message: "[Frontend] Build Success\nby ${Author_ID} (${Author_Name})\n(<${GIT_URL}|Details>)",
-                                       endpoint: "${MM_URL}",
-                                       channel: 'mafia_in_sns_game')
-                    }
-                }
-            }
-        }
-        failure {
-            script {
-                withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
-                    withCredentials([string(credentialsId: 'mattermost-url', variable: 'MM_URL')]) {
-                        def Author_ID = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
-                        def Author_Name = sh(script: 'git show -s --pretty=%ae', returnStdout: true).trim()
-                        mattermostSend(color: 'danger',
-                                       message: "[Frontend] Build Fail\n${Author_ID} (${Author_Name})\n(<${GIT_URL}|Details>)",
-                                       endpoint: "${MM_URL}",
-                                       channel: 'mafia_in_sns_game')
-                    }
-                }
-            }
-        }
-    }
-}
-```
-
-4.4. 백엔드 파이프라인 작성
-
-```
-pipeline {
-    agent any
-    stages {
-        stage('GitLab Clone') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
-                        git credentialsId: 'gitlab-id-pw', branch: 'be/dev', url: GIT_URL
-                    }
-                }
-            }
-        }
-        stage('Project Build') {
-            steps {
-                script {
-                    withCredentials([file(credentialsId: 'application-yml', variable: 'APP_YML')]) {
-                        withCredentials([file(credentialsId: 'application-secret-yml', variable: 'APP_SECRET_YML')]) {
-                            withCredentials([file(credentialsId: 'service-account-json', variable: 'SERVICE_JSON')]) {
-                                sh '''
-                                cd ./backend/src/main/resources &&
-                                chmod -R 755 . &&
-                                cp ${APP_YML} . &&
-                                cp ${APP_SECRET_YML} . &&
-                                cp ${SERVICE_JSON} .
-                                '''
-                                sh '''
-                                cd ./backend &&
-                                chmod +x gradlew &&
-                                ./gradlew clean build --exclude-task test
-                                '''
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        stage('Docker Build and Push') {
-            steps {
-                sh 'pwd'
-                sh 'ls -al'
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-path', usernameVariable: 'DOCKER_REPO', passwordVariable: 'DOCKER_PROJECT')]) {
-                        withCredentials([string(credentialsId: 'docker-registry-url', variable: 'REGISTRY_URL')]) {
-                            sh 'cd ./backend && sudo docker build --platform linux/amd64 -t ${REGISTRY_URL}/${DOCKER_PROJECT} .'
-                            sh 'cd ./backend && sudo docker image push ${REGISTRY_URL}/${DOCKER_PROJECT}'
-                            sh 'sudo docker system prune -a -f'
-                            echo 'docker push Success!!'
-                        }
-                    }
-                }
-            }
-        }
-        stage('Project Deploy') {
-            steps {
-                sh 'pwd'
-                script {
-                    withCredentials([string(credentialsId: 'application-ip', variable: 'EC2_SERVER_IP')]) {
-                        withCredentials([usernamePassword(credentialsId: 'docker-hub-path', usernameVariable: 'DOCKER_REPO', passwordVariable: 'DOCKER_PROJECT')]) {
-                            def status = sh(script: 'curl -o /dev/null -w "%{http_code}" "https://${EC2_SERVER_IP}/api/test/env"', returnStdout: true).trim()
-                            echo "status: ${status}"
-                            def currentUpstream = 'green'
-                            if (status == '200') {
-                                currentUpstream = sh(script: 'curl -s "https://${EC2_SERVER_IP}/api/test/env"', returnStdout: true).trim()
-                            }
-                            def currentPort = currentUpstream == 'blue' ? 8080 : 8081
-                            def stoppedPort = currentUpstream == 'blue' ? 8081 : 8080
-                            def targetUpstream = currentUpstream == 'blue' ? 'green' : 'blue'
-                            echo "targetUpstream: ${targetUpstream}"
-                            echo "currentUpstream: ${currentUpstream}"
-                            sshagent(credentials: ['application-pem']) {
-                                withCredentials([usernamePassword(credentialsId: 'docker-hub-id-pw', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                                    withCredentials([string(credentialsId: 'docker-registry-url', variable: 'REGISTRY_URL')]) {
-                                        sh """
-                                            ssh ubuntu@${EC2_SERVER_IP} 'sudo docker pull ${REGISTRY_URL}/${DOCKER_PROJECT}:latest &&
-                                            sudo docker-compose -f blue-green/docker-compose-${targetUpstream}.yml up -d'
-                                        """
-                                    }
-                                }
-                            }
-                            retry(10) {
-                                sh(script: 'curl -s https://${EC2_SERVER_IP}:${stoppedPort}/api/test/env', returnStatus: true) == 0
-                                sleep time: 10, unit: 'SECONDS'
-                            }
-                            sshagent(credentials: ['application-pem']) {
-                                sh """
-                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker exec -i nginx bash -c "chmod +x ./etc/nginx/conf.d/deploy.sh"'
-                                """
-                                sh """
-                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker exec -i nginx bash -c "./etc/nginx/conf.d/deploy.sh ${targetUpstream}"'
-                                """
-                                sh """
-                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker exec -i nginx bash -c "nginx -s reload"'
-                                """
-                            }
-                            sshagent(credentials: ['application-pem']) {
-                                sh """
-                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker-compose -f blue-green/docker-compose-${currentUpstream}.yml down'
-                                """
-                                sh """
-                                    ssh ubuntu@${EC2_SERVER_IP} 'sudo docker system prune -a -f'
-                                """
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    post {
-        success {
-            script {
-                withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
-                    withCredentials([string(credentialsId: 'mattermost-url', variable: 'MM_URL')]) {
-                        def Author_ID = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
-                        def Author_Name = sh(script: 'git show -s --pretty=%ae', returnStdout: true).trim()
-                        mattermostSend(color: 'good',
-                                      message: "[Backend] Build Success\nby ${Author_ID} (${Author_Name})\n(<${GIT_URL}|Details>)",
-                                      endpoint: "${MM_URL}",
-                                      channel: 'mafia_in_sns_game')
-                    }
-                }
-            }
-        }
-        failure {
-            script {
-                withCredentials([string(credentialsId: 'gitlab-repo-url', variable: 'GIT_URL')]) {
-                    withCredentials([string(credentialsId: 'mattermost-url', variable: 'MM_URL')]) {
-                        def Author_ID = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
-                        def Author_Name = sh(script: 'git show -s --pretty=%ae', returnStdout: true).trim()
-                        mattermostSend(color: 'danger',
-                                      message: "[Backend] Build Fail\n${Author_ID} (${Author_Name})\n(<${GIT_URL}|Details>)",
-                                      endpoint: "${MM_URL}",
-                                      channel: 'mafia_in_sns_game')
-                    }
-                }
-            }
-        }
-    }
-}
-```
+[4.5. 백엔드 파이프라인 작성](./backend_pipeline.yml)
 
 <br/><br/>
 
@@ -872,7 +610,7 @@ COPY ${JAR_FILE} backend.jar
 ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILES}", "-Dserver.env=${ENV}", "-Djasypt.encryptor.password=${JASYPT_PASSWORD}", "-jar", "/backend.jar"]
 ```
 
-7.4. Application 서버 직접 실행 혹은 Jenkins Webhook으로 실행
+7.4. Application 서버 Jenkins Webhook으로 실행
 
 ```
 docker-compose -f docker-compose-blue(green).yml up -d
