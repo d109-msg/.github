@@ -360,6 +360,7 @@ src
     <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="45%" height="70%">
 </div>
 
+<div>
 <br/>
 
 - 피드를 볼 수 있는 화면입니다.
@@ -367,6 +368,7 @@ src
 - 팔로우한 사람들의 피드가 끝나면 관계 없는 사람들의 피드도 볼 수 있습니다.
 - 마음에 드는 피드에 '좋아요'를 누를 수 있습니다.
 - 비회원 또한 메인 페이지에서 피드를 볼 수 있습니다.
+</div>
 
 ### 3. 피드 상세 페이지
 
@@ -375,11 +377,13 @@ src
     <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="45%" height="70%">
 </div>
 
-<br/>
+<div>
+  <br/>
 
 - 댓글을 확인하고 작성할 수 있습니다.
 - 대댓글 또한 작성 가능합니다.
 - 마음에 드는 댓글에 '좋아요'를 누를 수 있습니다.
+</div>
 
 ### 4. 게임 페이지
 
@@ -388,11 +392,13 @@ src
     <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="45%" height="70%">
 </div>
 
-<br/>
+<div>
+  <br/>
 
 - 랜덤 게임이나 초대 코드를 이용한 게임 생성이 가능합니다.
 - 게임 설명 페이지로 이동할 수 있습니다.
 - 내가 참여 중인 게임 방 목록을 확인할 수 있습니다.
+</div>
 
 ### 5. 게임 상세 페이지
 
@@ -401,12 +407,14 @@ src
     <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="45%" height="70%">
 </div>
 
-<br/>
+<div>
+  <br/>
 
 - 게임이 진행되는 페이지입니다.
 - 좌측 화면에서 플레이어가 올린 피드를 볼 수 있습니다.
 - 우측 화면에서 플레이어끼리 채팅을 할 수 있습니다.
 - 우측 화면 상단에 투표, 능력 설명, 능력 사용 버튼이 있습니다.
+</div>
 
 ### 6. 메시지 페이지
 
@@ -415,10 +423,12 @@ src
     <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="45%" height="70%">
 </div>
 
-<br/>
+<div>
+  <br/>
 
 - 유저 간 메시지를 주고 받을 수 있습니다.
 - \+ 버튼으로 간단히 상대를 추가할 수 있습니다.
+</div>
 
 ### 7. 마이 페이지
 
@@ -427,12 +437,14 @@ src
     <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="45%" height="70%">
 </div>
 
-<br/>
+<div>
+  <br/>
 
 - 나의 팔로워, 팔로잉 수 및 목록을 확인할 수 있습니다.
 - 내가 올린 피드 목록을 볼 수 있습니다.
 - 내가 참여했던 랜덤 게임의 전적 통계를 확인할 수 있습니다.
 - 초대 코드를 이용한 게임은 전적 통계에 포함되지 않습니다.
+</div>
 
 <br/><br/>
 
