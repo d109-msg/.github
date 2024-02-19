@@ -3,36 +3,36 @@
 <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/msg.png" width="100%" height="70%">
 
 <p align="center">
-  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
-  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
-  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
-  <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white">
-  <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=default&logo=HTML5&logoColor=white"> 
+  <img src="https://img.shields.io/badge/CSS-1572B6?style=default&logo=CSS3&logoColor=white"> 
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=default&logo=JavaScript&logoColor=black"> 
+  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=default&logo=Vuedotjs&logoColor=white">
+  <img src="https://img.shields.io/badge/npm-CB3837?style=default&logo=npm&logoColor=white">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/java-437291?style=for-the-badge&logo=openjdk&logoColor=white">
-  <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
-  <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white">
+  <img src="https://img.shields.io/badge/Java-437291?style=default&logo=openjdk&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=default&logo=springboot&logoColor=white">
+  <img src="https://img.shields.io/badge/Gradle-02303A?style=default&logo=gradle&logoColor=white">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"> 
-  <img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
-  <img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazons3&logoColor=white">
-  <img src="https://img.shields.io/badge/redis-DC382D?style=for-the-badge&logo=redis&logoColor=white">
+  <img src="https://img.shields.io/badge/MariaDB-003545?style=default&logo=mariadb&logoColor=white"> 
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=default&logo=mongodb&logoColor=white">
+  <img src="https://img.shields.io/badge/S3-569A31?style=default&logo=amazons3&logoColor=white">
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=default&logo=redis&logoColor=white">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
-  <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white">
-  <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
-  <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
+  <img src="https://img.shields.io/badge/EC2-FF9900?style=default&logo=amazonec2&logoColor=white">
+  <img src="https://img.shields.io/badge/Jenkins-D24939?style=default&logo=jenkins&logoColor=white">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=default&logo=docker&logoColor=white">
+  <img src="https://img.shields.io/badge/NGINX-009639?style=default&logo=nginx&logoColor=white">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
-  <img src="https://img.shields.io/badge/openai-412991?style=for-the-badge&logo=openai&logoColor=white">
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=default&logo=firebase&logoColor=white">
+  <img src="https://img.shields.io/badge/OpenAI-412991?style=default&logo=openai&logoColor=white">
 </p>
 
 <br/><br/>
