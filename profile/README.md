@@ -35,7 +35,7 @@
   <img src="https://img.shields.io/badge/OpenAI-412991?style=default&logo=openai&logoColor=white">
 </p>
 
-<br/><br/>
+<br/>
 
 ## 📌 목차
 
@@ -54,13 +54,13 @@
 - [🎞️ 영상](#🎞️-영상)
 - [👪 팀원](#👪-팀원)
 
-<br/><br/>
+<br/>
 
 ## 📆 기간
 
 ### 2023. 12. 28. ~ 2024. 02 .16.
 
-<br/><br/>
+<br/>
 
 ## 🔎 코드
 
@@ -68,7 +68,7 @@
 
 ### [2. Backend](https://github.com/ssafy-msg/backend)
 
-<br/><br/>
+<br/>
 
 ## 🏞️ 배경
 
@@ -76,7 +76,7 @@
 그러나 최근 지나친 자기과시와 인플루언서 및 기업들의 홍보로 도배되는 경우가 많습니다.  
 기존 SNS에 거부감이 있는 사람들이 편안하고 재밌게 소통하길 바라며 Mafia in SNS Group (이하 MSG)를 기획했습니다.
 
-<br/><br/>
+<br/>
 
 ## 📢 개요
 
@@ -88,13 +88,13 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 게임이 진행되면서 서로의 사진을 보고 추측하고 소통함으로써 친밀한 관계가 형성 됩니다.  
 일상의 지루함을 해소함과 더불어 새로운 관계를 자연스레 형성한다는 점에서 기존 SNS에 아쉬움을 느꼈던 사람들에게 신선함을 가져다줄 수 있습니다.
 
-<br/><br/>
+<br/>
 
 ## 🏗️ 아키텍처
 
 <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/architecture.png" width="100%" height="70%">
 
-<br/><br/>
+<br/>
 
 ## 🎯 주요 기능
 
@@ -198,7 +198,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 - **불침번**: 밤에 마피아들만의 채팅을 엿볼 수 있습니다.
 - **자경단**: 마피아 투표에서 지목되어 죽으면 마피아 중 1명의 정체를 강제로 공개합니다.
 
-<br/><br/>
+<br/>
 
 ## 💡 주요 기술
 
@@ -240,7 +240,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 - **Firebase Cloud Messaging**
 - **OpenAI**
 
-<br/><br/>
+<br/>
 
 ## 💻 협업 도구
 
@@ -252,7 +252,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 - **Draw.io**: 다이어그램 생성, 프로세스 플로우 및 아키텍처 설계
 - **ERDCloud**: 데이터베이스 스키마 디자인, ERD 작성 및 공유
 
-<br/><br/>
+<br/>
 
 ## 📄 산출물
 
@@ -264,7 +264,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 
 ### [4. 시퀀스 다이어그램](https://drive.google.com/file/d/1orYuNhYWD8HfmYrHk7kIVUhlJ_i3BWFZ/view?usp=sharing)
 
-<br/><br/>
+<br/>
 
 ## 📋 결과물
 
@@ -274,7 +274,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 
 ### [3. 포팅 매뉴얼](https://github.com/ssafy-msg/.github/blob/main/profile/exec/manual.md)
 
-<br/><br/>
+<br/>
 
 ## 📂 프로젝트 구조
 
@@ -344,7 +344,7 @@ src
 └─ test
 ```
 
-<br/><br/>
+<br/>
 
 ## 🌐 화면
 
@@ -441,7 +441,7 @@ src
 - 초대 코드를 이용한 게임은 전적 통계에 포함되지 않습니다.
 </div>
 
-<br/><br/>
+<br/>
 
 ## 🎞️ 영상
 
@@ -449,7 +449,7 @@ src
 
 ### [2. 시연](https://youtu.be/PrLkPQOzDgE)
 
-<br/><br/>
+<br/>
 
 ## 👪 팀원
 
