@@ -356,11 +356,10 @@ src
 ### 2. 메인 페이지
 
 <div>
-    <img align="left" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_light.png" width="48%" height="70%">
-    <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="48%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_light.png" width="60%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="60%" height="70%">
 </div>
 
-<div style="margin: 30px;"></div>
 <br/>
 
 - 피드를 볼 수 있는 화면입니다.
@@ -372,11 +371,10 @@ src
 ### 3. 피드 상세 페이지
 
 <div>
-    <img align="left" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="48%" height="70%">
-    <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="48%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="60%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="60%" height="70%">
 </div>
 
-<div style="margin: 30px;"></div>
 <br/>
 
 - 댓글을 확인하고 작성할 수 있습니다.
@@ -386,11 +384,10 @@ src
 ### 4. 게임 페이지
 
 <div>
-    <img align="left" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_light.png" width="48%" height="70%">
-    <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="48%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_light.png" width="60%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="60%" height="70%">
 </div>
 
-<div style="margin: 30px;"></div>
 <br/>
 
 - 랜덤 게임이나 초대 코드를 이용한 게임 생성이 가능합니다.
@@ -400,11 +397,10 @@ src
 ### 5. 게임 상세 페이지
 
 <div>
-    <img align="left" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="48%" height="70%">
-    <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="48%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="60%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="60%" height="70%">
 </div>
 
-<div style="margin: 30px;"></div>
 <br/>
 
 - 게임이 진행되는 페이지입니다.
@@ -415,11 +411,10 @@ src
 ### 6. 메시지 페이지
 
 <div>
-    <img align="left" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_light.png" width="48%" height="70%">
-    <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="48%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_light.png" width="60%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="60%" height="70%">
 </div>
 
-<div style="margin: 30px;"></div>
 <br/>
 
 - 유저 간 메시지를 주고 받을 수 있습니다.
@@ -428,18 +423,16 @@ src
 ### 7. 마이 페이지
 
 <div>
-    <img align="left" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_light.png" width="48%" height="70%">
-    <img align="right" src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="48%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_light.png" width="60%" height="70%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="60%" height="70%">
 </div>
 
-<div style="margin: 30px;"></div>
 <br/>
 
 - 나의 팔로워, 팔로잉 수 및 목록을 확인할 수 있습니다.
 - 내가 올린 피드 목록을 볼 수 있습니다.
 - 내가 참여했던 랜덤 게임의 전적 통계를 확인할 수 있습니다.
 - 초대 코드를 이용한 게임은 전적 통계에 포함되지 않습니다.
-</div>
 
 <br/>
 
