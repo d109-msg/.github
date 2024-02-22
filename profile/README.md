@@ -1,41 +1,44 @@
-# 🕵️ Mafia in SNS Game (MSG)
+<div>
+<div  align="center">
+  <h1>🕵️ Mafia in SNS Game (MSG)  </h1> 
+  
+  <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/msg.png" width="100%" height="70%">
 
-<img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/msg.png" width="100%" height="70%">
-
-<p align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=default&logo=HTML5&logoColor=white"> 
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=default&logo=CSS3&logoColor=white"> 
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=default&logo=JavaScript&logoColor=black"> 
-  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=default&logo=Vuedotjs&logoColor=white">
-  <img src="https://img.shields.io/badge/npm-CB3837?style=default&logo=npm&logoColor=white">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Java-437291?style=default&logo=openjdk&logoColor=white">
-  <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=default&logo=springboot&logoColor=white">
-  <img src="https://img.shields.io/badge/Gradle-02303A?style=default&logo=gradle&logoColor=white">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/MariaDB-003545?style=default&logo=mariadb&logoColor=white"> 
-  <img src="https://img.shields.io/badge/MongoDB-47A248?style=default&logo=mongodb&logoColor=white">
-  <img src="https://img.shields.io/badge/S3-569A31?style=default&logo=amazons3&logoColor=white">
-  <img src="https://img.shields.io/badge/Redis-DC382D?style=default&logo=redis&logoColor=white">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/EC2-FF9900?style=default&logo=amazonec2&logoColor=white">
-  <img src="https://img.shields.io/badge/Jenkins-D24939?style=default&logo=jenkins&logoColor=white">
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=default&logo=docker&logoColor=white">
-  <img src="https://img.shields.io/badge/NGINX-009639?style=default&logo=nginx&logoColor=white">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=default&logo=firebase&logoColor=white">
-  <img src="https://img.shields.io/badge/OpenAI-412991?style=default&logo=openai&logoColor=white">
-</p>
-
-<br/>
+  <p>
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=default&logo=HTML5&logoColor=white"> 
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=default&logo=CSS3&logoColor=white"> 
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=default&logo=JavaScript&logoColor=black"> 
+    <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=default&logo=Vuedotjs&logoColor=white">
+    <img src="https://img.shields.io/badge/npm-CB3837?style=default&logo=npm&logoColor=white">
+  </p>
+  
+  <p >
+    <img src="https://img.shields.io/badge/Java-437291?style=default&logo=openjdk&logoColor=white">
+    <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=default&logo=springboot&logoColor=white">
+    <img src="https://img.shields.io/badge/Gradle-02303A?style=default&logo=gradle&logoColor=white">
+  </p>
+  
+  <p >
+    <img src="https://img.shields.io/badge/MariaDB-003545?style=default&logo=mariadb&logoColor=white"> 
+    <img src="https://img.shields.io/badge/MongoDB-47A248?style=default&logo=mongodb&logoColor=white">
+    <img src="https://img.shields.io/badge/S3-569A31?style=default&logo=amazons3&logoColor=white">
+    <img src="https://img.shields.io/badge/Redis-DC382D?style=default&logo=redis&logoColor=white">
+  </p>
+  
+  <p >
+    <img src="https://img.shields.io/badge/EC2-FF9900?style=default&logo=amazonec2&logoColor=white">
+    <img src="https://img.shields.io/badge/Jenkins-D24939?style=default&logo=jenkins&logoColor=white">
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=default&logo=docker&logoColor=white">
+    <img src="https://img.shields.io/badge/NGINX-009639?style=default&logo=nginx&logoColor=white">
+  </p>
+  
+  <p >
+    <img src="https://img.shields.io/badge/Firebase-FFCA28?style=default&logo=firebase&logoColor=white">
+    <img src="https://img.shields.io/badge/OpenAI-412991?style=default&logo=openai&logoColor=white">
+  </p>
+  
+  <br/>
+</div>
 
 ## 📌 목차
 
@@ -355,9 +358,9 @@ src
 
 ### 2. 메인 페이지
 
-<div>
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_light.png" width="60%" height="70%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="60%" height="70%">
+<div align="center">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_light.png" width="450px" >
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="450px" >
 </div>
 
 <br/>
@@ -370,9 +373,9 @@ src
 
 ### 3. 피드 상세 페이지
 
-<div>
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="60%" height="70%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="60%" height="70%">
+<div align="center">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="450px">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="450px" >
 </div>
 
 <br/>
@@ -383,9 +386,9 @@ src
 
 ### 4. 게임 페이지
 
-<div>
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_light.png" width="60%" height="70%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="60%" height="70%">
+<div align="center">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_light.png" width="450px">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="450px">
 </div>
 
 <br/>
@@ -396,9 +399,9 @@ src
 
 ### 5. 게임 상세 페이지
 
-<div>
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="60%" height="70%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="60%" height="70%">
+<div align="center">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="450px">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="450px">
 </div>
 
 <br/>
@@ -410,9 +413,9 @@ src
 
 ### 6. 메시지 페이지
 
-<div>
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_light.png" width="60%" height="70%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="60%" height="70%">
+<div align="center">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_light.png" width="450px" >
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="450px">
 </div>
 
 <br/>
@@ -422,9 +425,9 @@ src
 
 ### 7. 마이 페이지
 
-<div>
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_light.png" width="60%" height="70%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="60%" height="70%">
+<div align="center">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_light.png" width="450px" >
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="450px">
 </div>
 
 <br/>
@@ -531,3 +534,5 @@ src
     </td>
   </tr>
 </table>
+
+</div>
