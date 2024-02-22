@@ -359,8 +359,8 @@ src
 ### 2. 메인 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_light.png" width="450px" >
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="450px" >
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_light.png" width="45%" >
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="45%" >
 </div>
 
 <br/>
@@ -374,8 +374,8 @@ src
 ### 3. 피드 상세 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="450px">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="450px" >
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="45%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="45%" >
 </div>
 
 <br/>
@@ -387,8 +387,8 @@ src
 ### 4. 게임 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_light.png" width="450px">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="450px">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_light.png" width="45%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="45%">
 </div>
 
 <br/>
@@ -400,8 +400,8 @@ src
 ### 5. 게임 상세 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="450px">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="450px">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="45%">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="45%">
 </div>
 
 <br/>
@@ -414,8 +414,8 @@ src
 ### 6. 메시지 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_light.png" width="450px" >
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="450px">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_light.png" width="45%" >
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="45%">
 </div>
 
 <br/>
@@ -426,8 +426,8 @@ src
 ### 7. 마이 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_light.png" width="450px" >
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="450px">
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_light.png" width="45%" >
+    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="45%">
 </div>
 
 <br/>
