@@ -2,7 +2,7 @@
 <div  align="center">
   <h1>🕵️ Mafia in SNS Game (MSG)  </h1> 
   
-  <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/msg.png" width="100%" height="70%">
+  <img src="https://github.com/d109-msg/.github/blob/main/profile/src/msg.png" width="100%" height="70%">
 
   <p>
     <img src="https://img.shields.io/badge/HTML5-E34F26?style=default&logo=HTML5&logoColor=white"> 
@@ -67,9 +67,9 @@
 
 ## 🔎 코드
 
-### [1. Frontend](https://github.com/ssafy-msg/frontend)
+### [1. Frontend](https://github.com/d109-msg/frontend)
 
-### [2. Backend](https://github.com/ssafy-msg/backend)
+### [2. Backend](https://github.com/d109-msg/backend)
 
 <br/>
 
@@ -95,7 +95,7 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 
 ## 🏗️ 아키텍처
 
-<img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/architecture.png" width="100%" height="70%">
+<img src="https://github.com/d109-msg/.github/blob/main/profile/src/architecture.png" width="100%" height="70%">
 
 <br/>
 
@@ -271,11 +271,11 @@ MSG는 사진을 기반으로 일상을 공유하는 일반적인 SNS를 그대�
 
 ## 📋 결과물
 
-### [1. 중간 발표자료](https://github.com/ssafy-msg/.github/blob/main/profile/pt/midterm.pdf)
+### [1. 중간 발표자료](https://github.com/d109-msg/.github/blob/main/profile/pt/midterm.pdf)
 
-### [2. 최종 발표자료](https://github.com/ssafy-msg/.github/blob/main/profile/pt/final.pdf)
+### [2. 최종 발표자료](https://github.com/d109-msg/.github/blob/main/profile/pt/final.pdf)
 
-### [3. 포팅 매뉴얼](https://github.com/ssafy-msg/.github/blob/main/profile/exec/manual.md)
+### [3. 포팅 매뉴얼](https://github.com/d109-msg/.github/blob/main/profile/exec/manual.md)
 
 <br/>
 
@@ -359,8 +359,8 @@ src
 ### 2. 메인 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_light.png" width="45%" >
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MainPage_dark.png" width="45%" >
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/MainPage_light.png" width="45%" >
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/MainPage_dark.png" width="45%" >
 </div>
 
 <br/>
@@ -374,8 +374,8 @@ src
 ### 3. 피드 상세 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="45%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="45%" >
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/FeedDetailPage_light.PNG" width="45%">
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/FeedDetailPage_dark.PNG" width="45%" >
 </div>
 
 <br/>
@@ -387,8 +387,8 @@ src
 ### 4. 게임 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_light.png" width="45%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/GamePage_dark.png" width="45%">
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/GamePage_light.png" width="45%">
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/GamePage_dark.png" width="45%">
 </div>
 
 <br/>
@@ -400,8 +400,8 @@ src
 ### 5. 게임 상세 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="45%">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="45%">
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/RoomDetail_light.png" width="45%">
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/RoomDetail_dark.png" width="45%">
 </div>
 
 <br/>
@@ -414,8 +414,8 @@ src
 ### 6. 메시지 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_light.png" width="45%" >
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="45%">
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/MessagePage_light.png" width="45%" >
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/MessagePage_dark.png" width="45%">
 </div>
 
 <br/>
@@ -426,8 +426,8 @@ src
 ### 7. 마이 페이지
 
 <div align="center">
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_light.png" width="45%" >
-    <img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/MyPage_dark.png" width="45%">
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/MyPage_light.png" width="45%" >
+    <img src="https://github.com/d109-msg/.github/blob/main/profile/src/MyPage_dark.png" width="45%">
 </div>
 
 <br/>
@@ -455,7 +455,7 @@ src
   <tr>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/hyunjiihye"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/hyunjiihye.jpg" height="150px" alt="현지혜"></a>
+      <a href="https://github.com/hyunjiihye"><img src="https://github.com/d109-msg/.github/blob/main/profile/src/hyunjiihye.jpg" height="150px" alt="현지혜"></a>
       <br/>
       <b><a href="https://github.com/hyunjiihye" style="text-align:center;">현지혜</a></b>
       <br/>
@@ -467,7 +467,7 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/suehwanBoo"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/suehwanBoo.jpg" height="150px" alt="부수환"></a>
+      <a href="https://github.com/suehwanBoo"><img src="https://github.com/d109-msg/.github/blob/main/profile/src/suehwanBoo.jpg" height="150px" alt="부수환"></a>
       <br/>
       <b><a href="https://github.com/suehwanBoo" style="text-align:center;">부수환</a></b>
       <br/>
@@ -486,7 +486,7 @@ src
   <tr>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/LeeChangon"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/LeeChangon.jpg" height="150px" alt="이창곤"></a>
+      <a href="https://github.com/LeeChangon"><img src="https://github.com/d109-msg/.github/blob/main/profile/src/LeeChangon.jpg" height="150px" alt="이창곤"></a>
       <br/>
       <b><a href="https://github.com/LeeChangon" style="text-align:center;">이창곤</a></b>
       <br/>
@@ -498,7 +498,7 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/yi219"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/yi219.jpg" height="150px" alt="금예인"></a>
+      <a href="https://github.com/yi219"><img src="https://github.com/d109-msg/.github/blob/main/profile/src/yi219.jpg" height="150px" alt="금예인"></a>
       <br/>
       <b><a href="https://github.com/yi219" style="text-align:center;">금예인</a></b>
       <br/>
@@ -510,7 +510,7 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/Limkyuhwan"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/Limkyuhwan.jpg" height="150px" alt="임규환"></a>
+      <a href="https://github.com/Limkyuhwan"><img src="https://github.com/d109-msg/.github/blob/main/profile/src/Limkyuhwan.jpg" height="150px" alt="임규환"></a>
       <br/>
       <b><a href="https://github.com/Limkyuhwan" style="text-align:center;">임규환</a></b>
       <br/>
@@ -522,7 +522,7 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/ubermensch100326"><img src="https://github.com/ssafy-msg/.github/blob/main/profile/src/ubermensch100326.jpg" height="150px" alt="최호조"></a>
+      <a href="https://github.com/ubermensch100326"><img src="https://github.com/d109-msg/.github/blob/main/profile/src/ubermensch100326.jpg" height="150px" alt="최호조"></a>
       <br/>
       <b><a href="https://github.com/ubermensch100326" style="text-align:center;">최호조</a></b>
       <br/>
