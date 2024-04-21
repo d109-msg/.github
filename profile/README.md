@@ -522,9 +522,9 @@ src
     </td>
     <td style="border: 1px solid #ccc; padding: 10px; text-align: center;">
       <div style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-      <a href="https://github.com/ubermensch100326"><img src="https://github.com/d109-msg/.github/blob/main/profile/src/ubermensch100326.jpg" height="150px" alt="최호조"></a>
+      <a href="https://github.com/choihojo"><img src="https://github.com/d109-msg/.github/blob/main/profile/src/choihojo.jpg" height="150px" alt="최호조"></a>
       <br/>
-      <b><a href="https://github.com/ubermensch100326" style="text-align:center;">최호조</a></b>
+      <b><a href="https://github.com/choihojo" style="text-align:center;">최호조</a></b>
       <br/>
       </div>
       <br/>
